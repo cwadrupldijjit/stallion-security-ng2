@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/HomeComponent/home.component', './components/ServicesComponent/services.component', './components/RecommendComponent/recommend.component', './components/MissingPageComponent/missing.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', './components/HomeComponent/home.component', './components/ServicesComponent/services.component', './components/RecommendComponent/recommend.component', './components/MissingPageComponent/missing.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core', 'angular2/router', './components/HomeComponent
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, home_component_1, services_component_1, recommend_component_1, missing_component_1;
+    var core_1, common_1, router_1, home_component_1, services_component_1, recommend_component_1, missing_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -32,19 +35,25 @@ System.register(['angular2/core', 'angular2/router', './components/HomeComponent
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_routerLink) {
+                    this['router-link'] = _routerLink;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
-                        templateUrl: './app/app.html',
                         directives: [
-                            router_1.ROUTER_DIRECTIVES
+                            common_1.COMMON_DIRECTIVES,
+                            common_1.CORE_DIRECTIVES,
+                            router_1.ROUTER_DIRECTIVES,
+                            router_1.RouterLink
                         ],
                         providers: [
-                            router_1.ROUTER_PROVIDERS,
                             core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
                         ]
+                    }),
+                    core_1.View({
+                        templateUrl: './app/app.html',
+                        directives: router_1.ROUTER_DIRECTIVES
                     }),
                     router_1.RouteConfig([
                         { path: '/', component: home_component_1.HomeComponent, as: 'Home' },
@@ -52,7 +61,7 @@ System.register(['angular2/core', 'angular2/router', './components/HomeComponent
                         { path: '/recommendations', component: recommend_component_1.RecommendComponent, as: 'Recommendations' },
                         { path: '/404', component: missing_component_1.MissingPageComponent, as: 'Missing-Page', useAsDefault: true }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.RouterLink])
                 ], AppComponent);
                 return AppComponent;
             })();
