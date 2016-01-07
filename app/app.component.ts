@@ -3,7 +3,8 @@ import {COMMON_DIRECTIVES,
 		CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig,
 		RouterLink,
-		ROUTER_DIRECTIVES,
+		RouterOutlet,
+		// ROUTER_DIRECTIVES,
 		ROUTER_PROVIDERS,
 		LocationStrategy,
 		HashLocationStrategy } from 'angular2/router';
@@ -14,19 +15,33 @@ import {MissingPageComponent} from './components/MissingPageComponent/missing.co
 
 @Component({
 	selector: 'app',
-	directives: [
-		COMMON_DIRECTIVES,
-		CORE_DIRECTIVES,
-		ROUTER_DIRECTIVES,
-		RouterLink
-	],
 	providers: [
 		provide(LocationStrategy, {useClass: HashLocationStrategy})
 	]
 })
 @View({
-	templateUrl: './app/app.html',
-	directives: ROUTER_DIRECTIVES
+	// templateUrl: './app/app.html',
+	template: `
+		<header>
+			AppHeader
+			<ul>
+				<li><a [router-link]="[ '/' ]">Home</a></li>
+				<li><a [router-link]="[ '/services' ]">Services</a></li>
+			</ul>
+		</header>
+
+		<router-outlet></router-outlet>
+
+		<footer>
+			AppFooter
+		</footer>
+	`,
+	directives: [
+		COMMON_DIRECTIVES,
+		CORE_DIRECTIVES,
+		RouterOutlet,
+		RouterLink
+	]
 })
 @RouteConfig([
 	{ path: '/', 				component: HomeComponent, 		 as: 'Home'				},

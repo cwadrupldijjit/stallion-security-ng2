@@ -41,19 +41,19 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
-                        directives: [
-                            common_1.COMMON_DIRECTIVES,
-                            common_1.CORE_DIRECTIVES,
-                            router_1.ROUTER_DIRECTIVES,
-                            router_1.RouterLink
-                        ],
                         providers: [
                             core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
                         ]
                     }),
                     core_1.View({
-                        templateUrl: './app/app.html',
-                        directives: router_1.ROUTER_DIRECTIVES
+                        // templateUrl: './app/app.html',
+                        template: "\n\t\t<header>\n\t\t\tAppHeader\n\t\t\t<ul>\n\t\t\t\t<li><a [router-link]=\"[ '/' ]\">Home</a></li>\n\t\t\t\t<li><a [router-link]=\"[ '/services' ]\">Services</a></li>\n\t\t\t</ul>\n\t\t</header>\n\n\t\t<router-outlet></router-outlet>\n\n\t\t<footer>\n\t\t\tAppFooter\n\t\t</footer>\n\t",
+                        directives: [
+                            common_1.COMMON_DIRECTIVES,
+                            common_1.CORE_DIRECTIVES,
+                            router_1.RouterOutlet,
+                            router_1.RouterLink
+                        ]
                     }),
                     router_1.RouteConfig([
                         { path: '/', component: home_component_1.HomeComponent, as: 'Home' },
