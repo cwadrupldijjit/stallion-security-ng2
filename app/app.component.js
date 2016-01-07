@@ -35,24 +35,36 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_routerLink) {
-                    this['router-link'] = _routerLink;
+                function AppComponent() {
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
                         providers: [
-                            core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
+                            router_1.ROUTER_PROVIDERS
                         ]
                     }),
                     core_1.View({
-                        // templateUrl: './app/app.html',
-                        template: "\n\t\t<header>\n\t\t\tAppHeader\n\t\t\t<ul>\n\t\t\t\t<li><a [router-link]=\"[ '/' ]\">Home</a></li>\n\t\t\t\t<li><a [router-link]=\"[ '/services' ]\">Services</a></li>\n\t\t\t</ul>\n\t\t</header>\n\n\t\t<router-outlet></router-outlet>\n\n\t\t<footer>\n\t\t\tAppFooter\n\t\t</footer>\n\t",
+                        templateUrl: './app/app.html',
+                        // template: `
+                        // 	<header>
+                        // 		AppHeader
+                        // 		<ul>
+                        // 			<li><a [router-link]="[ '/' ]">Home</a></li>
+                        // 			<li><a [router-link]="[ '/services' ]">Services</a></li>
+                        // 		</ul>
+                        // 	</header>
+                        // 	<router-outlet></router-outlet>
+                        // 	<footer>
+                        // 		AppFooter
+                        // 	</footer>
+                        // `,
                         directives: [
                             common_1.COMMON_DIRECTIVES,
                             common_1.CORE_DIRECTIVES,
-                            router_1.RouterOutlet,
-                            router_1.RouterLink
+                            // RouterOutlet,
+                            // RouterLink
+                            router_1.ROUTER_DIRECTIVES
                         ]
                     }),
                     router_1.RouteConfig([
@@ -61,7 +73,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
                         { path: '/recommendations', component: recommend_component_1.RecommendComponent, as: 'Recommendations' },
                         { path: '/404', component: missing_component_1.MissingPageComponent, as: 'Missing-Page', useAsDefault: true }
                     ]), 
-                    __metadata('design:paramtypes', [router_1.RouterLink])
+                    __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             })();
