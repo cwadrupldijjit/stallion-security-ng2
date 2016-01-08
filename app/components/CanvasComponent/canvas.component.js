@@ -18,9 +18,36 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             CanvasComponent = (function () {
                 function CanvasComponent() {
+                    this.canvas = document.getElementById('lightning-border');
+                    this.context = this.canvas.getContext('2d');
+                    var vm = this, context = this.canvas.getContext('2d');
+                    function initialize() {
+                        window.addEventListener('resize', this.resizeCanvas, false);
+                        vm.resizeCanvas();
+                        // $scope.$apply();
+                    }
                 }
+                CanvasComponent.prototype.redraw = function () {
+                    this.context.beginPath();
+                    this.context.moveTo(0, 5);
+                    this.context.lineTo((this.canvas.width / 2 + 5), 5);
+                    this.context.lineTo((this.canvas.width / 2 - 5), 15);
+                    this.context.lineTo((this.canvas.width), 15);
+                    this.context.strokeStyle = '#BD2809';
+                    this.context.lineWidth = '10';
+                    this.context.lineJoin = 'miter';
+                    this.context.stroke();
+                };
+                CanvasComponent.prototype.resizeCanvas = function () {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = 20;
+                    this.redraw();
+                };
                 CanvasComponent = __decorate([
-                    core_1.Component({}), 
+                    core_1.Component({
+                        selector: 'lightning-border',
+                        template: '<canvas id="lightning-border"></canvas>'
+                    }), 
                     __metadata('design:paramtypes', [])
                 ], CanvasComponent);
                 return CanvasComponent;
