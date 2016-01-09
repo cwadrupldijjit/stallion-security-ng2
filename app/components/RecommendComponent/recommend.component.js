@@ -21,6 +21,7 @@ System.register(['angular2/core'], function(exports_1) {
                 }
                 RecommendComponent = __decorate([
                     core_1.Component({
+                        selector: 'recommend-html',
                         templateUrl: 'app/components/RecommendComponent/recommend.html'
                     }), 
                     __metadata('design:paramtypes', [])
@@ -31,4 +32,4 @@ System.register(['angular2/core'], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVjb21tZW5kLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbInJlY29tbWVuZC5jb21wb25lbnQudHMiXSwibmFtZXMiOlsiUmVjb21tZW5kQ29tcG9uZW50IiwiUmVjb21tZW5kQ29tcG9uZW50LmNvbnN0cnVjdG9yIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFFQTtnQkFBQUE7Z0JBTUFDLENBQUNBO2dCQU5ERDtvQkFBQ0EsZ0JBQVNBLENBQUNBO3dCQUNWQSxXQUFXQSxFQUFFQSxrREFBa0RBO3FCQUMvREEsQ0FBQ0E7O3VDQUlEQTtnQkFBREEseUJBQUNBO1lBQURBLENBQUNBLEFBTkQsSUFNQztZQU5ELG1EQU1DLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVjb21tZW5kLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbInJlY29tbWVuZC5jb21wb25lbnQudHMiXSwibmFtZXMiOlsiUmVjb21tZW5kQ29tcG9uZW50IiwiUmVjb21tZW5kQ29tcG9uZW50LmNvbnN0cnVjdG9yIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFFQTtnQkFBQUE7Z0JBT0FDLENBQUNBO2dCQVBERDtvQkFBQ0EsZ0JBQVNBLENBQUNBO3dCQUNWQSxRQUFRQSxFQUFFQSxnQkFBZ0JBO3dCQUMxQkEsV0FBV0EsRUFBRUEsa0RBQWtEQTtxQkFDL0RBLENBQUNBOzt1Q0FJREE7Z0JBQURBLHlCQUFDQTtZQUFEQSxDQUFDQSxBQVBELElBT0M7WUFQRCxtREFPQyxDQUFBIn0=
