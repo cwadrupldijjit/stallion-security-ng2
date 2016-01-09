@@ -10,7 +10,7 @@ class LightningService {
         this.context.lineTo((this.canvas.width), 15);
         
         this.context.strokeStyle = '#BD2809';
-        this.context.lineWidth = '10';
+        this.context.lineWidth = 10;
         this.context.lineJoin = 'miter';
         this.context.stroke();
     }
@@ -22,7 +22,7 @@ class LightningService {
     }
     
     private canvas: HTMLCanvasElement;
-    private context: any;
+    private context: CanvasRenderingContext2D;
     public initialize() {
         window.addEventListener('resize', this.resizeCanvas.bind(this), false);
         this.resizeCanvas();
