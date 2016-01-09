@@ -1,5 +1,7 @@
 * {
 	transition: all linear .25s;
+	
+	box-sizing: border-box;
 }
 
 body {
@@ -20,4 +22,7 @@ app {
 	
 	height: 100%;
 	width: 100%;
+	
+	color: whitesmoke;
+	font-family: Arial, Helvetica, sans-serif;
 }
