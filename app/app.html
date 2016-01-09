@@ -1,49 +1,51 @@
-<header (load)="lightningService.initialize">
-	<div id="centered-logo-holder">
-		<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
-	</div>
-	
-	<!--<div class="large-screen-closed pull-right">
-		<button ng-click="mc.openMain(console.log('clicked'))" id="menu-button-small"><span class="fa fa-bars"></span></button>
-	</div>-->
-	
-	<div id="main-menu" class="centered-container">
-		<nav class="menu-options">
-			<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
-		</nav>
+<div id="app-html">
+	<header (load)="lightningService.initialize">
+		<div id="centered-logo-holder">
+			<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
+		</div>
 		
-		<nav class="menu-options">
-			<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
-		</nav>
+		<!--<div class="large-screen-closed pull-right">
+			<button ng-click="mc.openMain(console.log('clicked'))" id="menu-button-small"><span class="fa fa-bars"></span></button>
+		</div>-->
 		
-		<nav class="menu-options">
-			<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
-		</nav>
+		<div id="main-menu" class="centered-container">
+			<nav class="menu-options">
+				<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
+			</nav>
+			
+			<nav class="menu-options">
+				<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
+			</nav>
+			
+			<nav class="menu-options">
+				<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
+			</nav>
+			
+			<!--<nav class="menu-options">
+				<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
+			</nav>-->
+		</div>
 		
-		<!--<nav class="menu-options">
-			<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
-		</nav>-->
-	</div>
-	
-    <canvas id="lightning-border"></canvas>
-</header>
+		<canvas id="lightning-border"></canvas>
+	</header>
 
-<div id="route" class="centered-container">
-	<router-outlet></router-outlet>
+	<div id="route" class="centered-container">
+		<router-outlet></router-outlet>
+	</div>
+
+	<footer>
+		<div class="centered-container">
+			<div>
+				<span class="fa fa-phone"></span> : <a href="tel:8017177330">801-717-7330</a>
+			</div>
+			
+			<div>
+				<span class="fa fa-fax"></span> : 801-377-5625
+			</div>
+			
+			<div id="footer-wider">
+				<span class="fa fa-map-marker"></span> : 52 W 500 S, Ste #28, Provo, UT, 84601
+			</div>
+		</div>
+	</footer>
 </div>
-
-<footer>
-	<div class="centered-container">
-		<div>
-			<span class="fa fa-phone"></span> : <a href="tel:8017177330">801-717-7330</a>
-		</div>
-		
-		<div>
-			<span class="fa fa-fax"></span> : 801-377-5625
-		</div>
-		
-		<div id="footer-wider">
-			<span class="fa fa-map-marker"></span> : 52 W 500 S, Ste #28, Provo, UT, 84601
-		</div>
-	</div>
-</footer>
