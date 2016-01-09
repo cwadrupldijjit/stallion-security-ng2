@@ -2,8 +2,6 @@ import {Component, View, provide} from 'angular2/core';
 import {COMMON_DIRECTIVES,
 		CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig,
-		RouterLink,
-		RouterOutlet,
 		ROUTER_DIRECTIVES,
 		ROUTER_PROVIDERS,
 		LocationStrategy,
@@ -24,11 +22,12 @@ import {LightningService} from './services/LightningService/lightning.service';
 })
 @View({
 	templateUrl: './app/app.html',
+	styleUrls: [
+		'./app/styles/styles.css'
+	],
 	directives: [
 		COMMON_DIRECTIVES,
 		CORE_DIRECTIVES,
-		// RouterOutlet,
-		// RouterLink
         ROUTER_DIRECTIVES
 	]
 })

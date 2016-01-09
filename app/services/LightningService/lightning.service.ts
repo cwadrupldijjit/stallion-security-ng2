@@ -21,16 +21,18 @@ class LightningService {
         this.redraw();
     }
     
-    private canvas = document.getElementById('lightning-border');
-    private context = this.canvas.getContext('2d');
+    private canvas: HTMLCanvasElement;
+    private context: any;
     public initialize() {
         window.addEventListener('resize', this.resizeCanvas.bind(this), false);
         this.resizeCanvas();
     }
     
     constructor() {
-        var vm = this,
-            context = this.canvas.getContext('2d');
+        var vm = this;
+		
+		this.canvas = document.getElementsByTagName('canvas')[0];
+		this.context = this.canvas.getContext('2d');
         
         this.initialize()
     }

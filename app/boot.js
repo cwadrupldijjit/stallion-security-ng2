@@ -19,4 +19,4 @@ System.register(['angular2/platform/browser', './app.component', 'angular2/route
         }
     }
 });
-//# sourceMappingURL=boot.js.map
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYm9vdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImJvb3QudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFLQSxtQkFBUyxDQUFDLDRCQUFZLEVBQUUsQ0FBQyx5QkFBZ0IsRUFBRSwwQ0FBd0IsQ0FBQyxDQUFDLENBQUMifQ==

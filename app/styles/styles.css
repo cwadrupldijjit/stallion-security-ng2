@@ -1,0 +1,208 @@
+body {
+	padding: 0 0 100px 0;
+	background-color: #0E2D47;
+	
+	display: block;
+	
+	width: 100%;
+	height: 100%;
+}
+
+.relative {
+	position: relative;
+}
+
+.pull-right {
+	float: right;
+}
+
+.centered-container {
+	width: 100%;
+	max-width: 1000px;
+	
+	margin: 0 auto;
+}
+
+
+/*.parallax-container {
+	
+}*/
+
+	.parallax-image {
+		width: 100%;
+		height: 100%;
+	}
+
+.page-banner {
+	height: 500px;
+}
+
+
+.menu-options {
+	font-weight: bolder;
+}
+
+	.menu-options:link {
+		color: black;
+		
+		font-weight: bold;
+	}
+
+#header {
+	position: relative;
+	/*left: 0;
+	top: 0;*/
+	
+	z-index: 150;
+	
+	width: 100%;
+	height: 178px;
+	
+	background-color: #FFF72C;
+	
+}
+	
+	#centered-logo-holder {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		
+		width: 50%;
+		
+		display: flex;
+		justify-content: space-around;
+	}
+	
+		#centered-logo-holder > img {
+			position: relative;
+			left: -50%;
+			top: 2px;
+			
+			height: 177px;
+			width: 395px;
+		}
+	
+	#bottom-border-header {
+		width: 100%;
+		height: 20px;
+		position: absolute;
+		left: 0;
+		bottom: -10px;
+	}
+
+
+.menu-main {
+	background-color: #0F1E2E;
+	
+	border-radius: 0px 0px 3px 3px;
+	
+	box-shadow: 3px 0 5px #0F1C24, -3px 0 5px #0F1C24;
+}
+
+	.menu-main-button {
+		width: 100%;
+		color: #FFFDF4;
+		
+		margin: 0;
+		padding: 10px 0 5px 0;
+		
+		border-radius: 0;
+		
+		font-weight: bolder;
+	}
+
+
+
+/*article {
+	background-color: #11355E;
+	box-shadow: 3px 0 5px #0F1C24, -3px 0 5px #0F1C24;
+}*/
+
+	/*#home-template #home-banner {
+		background-image: url('../assets/running-horse.jpg');
+		background-size: 100%;
+		
+		position: relative;
+		
+		overflow: hidden;
+	}*/
+	
+		/*#home-template #site-welcome {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			
+			width: calc(1000px - 60px);
+			
+			color: #FFFDF4;
+			background-color: rgba(15, 28, 36, .7);
+			box-shadow: 0 5px 30px rgba(15, 28, 36, .3), 
+						0 3px 15px rgba(15, 28, 36, .3), 
+						0 3px 5px rgba(15, 28, 36, .3), 
+						0 -3px 30px rgba(15, 28, 36, .3), 
+						0 -3px 15px rgba(15, 28, 36, .3), 
+						0 -3px 5px rgba(15, 28, 36, .3);
+			
+			padding: 8px 30px;
+			
+			font-size: 2.7em;
+			text-align: center;
+		}*/
+
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	
+	width: 100%;
+	
+	padding: 20px;
+	
+	background-color: #091B2B;
+	
+	color: white;
+	
+	text-align: center;
+}
+
+#menu-button-small {
+	display: none;
+	
+	min-width: auto;
+	
+	margin: 50px 30px;
+	
+	padding: 10px 20px;
+	
+	border-radius: 0;
+		
+	font-size: 7em;
+}
+
+/*@media all and (orientation: portrait) {
+	.centered-container {
+		width: 100%;
+	}
+	
+	.menu-main {
+		display: none;
+	}
+	
+	#menu-button-small {
+		display: block;
+	}
+	
+	header {
+		z-index: 50;
+		height: 250px;
+	}
+	
+		#centered-logo-holder {
+			top: 30px;
+		}
+	
+	#home-template #site-welcome {
+		width: 90%;
+	}
+}*/
