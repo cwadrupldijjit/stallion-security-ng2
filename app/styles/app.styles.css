@@ -27,64 +27,10 @@
 	height: 500px;
 }
 
-
-.menu-options {
-	font-weight: bolder;
-}
-
-	.menu-options:link {
-		color: black;
-		
-		font-weight: bold;
-	}
-
-#header {
-	position: relative;
-	/*left: 0;
-	top: 0;*/
-	
-	z-index: 150;
-	
-	width: 100%;
-	height: 178px;
-	
-	background-color: #FFF72C;
-	
-}
-	
-	#centered-logo-holder {
-		position: absolute;
-		left: 50%;
-		top: 0;
-		
-		width: 50%;
-		
-		display: flex;
-		justify-content: space-around;
-	}
-	
-		#centered-logo-holder > img {
-			position: relative;
-			left: -50%;
-			top: 2px;
-			
-			height: 177px;
-			width: 395px;
-		}
-	
-	#bottom-border-header {
-		width: 100%;
-		height: 20px;
-		position: absolute;
-		left: 0;
-		bottom: -10px;
-	}
-
-
 .menu-main {
 	background-color: #0F1E2E;
 	
-	border-radius: 0px 0px 3px 3px;
+	border-radius: 0px 0px 5px 5px;
 	
 	box-shadow: 3px 0 5px #0F1C24, -3px 0 5px #0F1C24;
 }

@@ -23,7 +23,8 @@ import {LightningService} from './services/LightningService/lightning.service';
 @View({
 	templateUrl: './app/app.html',
 	styleUrls: [
-		'./app/styles/app.styles.css'
+		'./app/styles/app.styles.css',
+		'./app/styles/header.styles.css',
 	],
 	directives: [
 		COMMON_DIRECTIVES,

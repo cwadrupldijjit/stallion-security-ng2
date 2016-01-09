@@ -1,33 +1,30 @@
 <header (load)="lightningService.initialize">
-	AppHeader
-	<ul>
-		<li><a [routerLink]="[ 'Home' ]">Home</a></li>
-		<li><a [routerLink]="[ 'Services' ]">Services</a></li>
-	</ul>
-    <canvas id="lightning-border"></canvas>
-	
-	<nav class="menu-options">
-		<button [routerLink]="['Home']" class="menu-main-button"><b>Home</b></button>
-	</nav>
-	
-	<nav class="menu-options">
-		<button [routerLink]="['Services']" class="menu-main-button"><b>Services</b></button>
-	</nav>
-	
-	<nav class="menu-options">
-		<button [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></button>
-	</nav>
-	
-	<!--<nav class="menu-options">
-		<button [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></button>
-	</nav>-->
-	
 	<div id="centered-logo-holder">
 		<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
 	</div>
-
+	
 	<div class="large-screen-closed pull-right">
 		<button ng-click="mc.openMain(console.log('clicked'))" id="menu-button-small"><span class="fa fa-bars"></span></button>
+	</div>
+	
+    <canvas id="lightning-border"></canvas>
+	
+	<div id="main-menu">
+		<nav class="menu-options">
+			<button [routerLink]="['Home']" class="menu-main-button"><b>Home</b></button>
+		</nav>
+		
+		<nav class="menu-options">
+			<button [routerLink]="['Services']" class="menu-main-button"><b>Services</b></button>
+		</nav>
+		
+		<nav class="menu-options">
+			<button [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></button>
+		</nav>
+		
+		<!--<nav class="menu-options">
+			<button [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></button>
+		</nav>-->
 	</div>
 </header>
 
