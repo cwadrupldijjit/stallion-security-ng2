@@ -37,33 +37,40 @@ header {
 		height: 20px;
 		position: absolute;
 		left: 0;
-		bottom: -9px;
+		bottom: -10px;
 	}
 
 #main-menu {
 	background-color: #0F1E2E;
 	border-radius: 0px 0px 3px 3px;
 	
+	overflow: hidden;
+	
 	display: flex;
 	flex-direction: row;
+	box-sizing: border-box;
+	position: relative;
+	top: 1px;
 }
 
 	#main-menu > .menu-options {
+		font-family: Arial, Helvetica, sans-serif;
 		font-weight: bolder;
 		
 		flex: 1;
 	}
 	
-		#main-menu > .menu-options > button {
+		#main-menu > .menu-options > div {
 			padding: .7em;
 			padding-top: 1.25em;
 			
-			border: none;
-			background: none;
+			color: white;
 			font-size: 1em;
+			text-align: center;
+			box-sizing: border-box;
 		}
 		
-		#main-menu > .menu-options > button:hover {
+		#main-menu > .menu-options > div:hover {
 			cursor: pointer;
 			background: rgba(200, 200, 250, .2);
 		}
