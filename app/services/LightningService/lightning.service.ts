@@ -23,7 +23,7 @@ class LightningService {
     
     private canvas = document.getElementById('lightning-border');
     private context = this.canvas.getContext('2d');
-    private initialize() {
+    public initialize() {
         window.addEventListener('resize', this.resizeCanvas.bind(this), false);
         this.resizeCanvas();
     }

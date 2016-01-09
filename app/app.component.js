@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', './components/HomeComponent/home.component', './components/ServicesComponent/services.component', './components/RecommendComponent/recommend.component', './components/MissingPageComponent/missing.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', './components/HomeComponent/home.component', './components/ServicesComponent/services.component', './components/RecommendComponent/recommend.component', './components/MissingPageComponent/missing.component', './services/LightningService/lightning.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, home_component_1, services_component_1, recommend_component_1, missing_component_1;
+    var core_1, common_1, router_1, home_component_1, services_component_1, recommend_component_1, missing_component_1, lightning_service_1;
     var AppComponent;
     return {
         setters:[
@@ -32,33 +32,25 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
             },
             function (missing_component_1_1) {
                 missing_component_1 = missing_component_1_1;
+            },
+            function (lightning_service_1_1) {
+                lightning_service_1 = lightning_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(lightningService) {
+                    this.lightningService = lightningService;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
                         providers: [
-                            router_1.ROUTER_PROVIDERS
+                            router_1.ROUTER_PROVIDERS,
+                            lightning_service_1.LightningService
                         ]
                     }),
                     core_1.View({
                         templateUrl: './app/app.html',
-                        // template: `
-                        // 	<header>
-                        // 		AppHeader
-                        // 		<ul>
-                        // 			<li><a [router-link]="[ '/' ]">Home</a></li>
-                        // 			<li><a [router-link]="[ '/services' ]">Services</a></li>
-                        // 		</ul>
-                        // 	</header>
-                        // 	<router-outlet></router-outlet>
-                        // 	<footer>
-                        // 		AppFooter
-                        // 	</footer>
-                        // `,
                         directives: [
                             common_1.COMMON_DIRECTIVES,
                             common_1.CORE_DIRECTIVES,
@@ -73,7 +65,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './compo
                         { path: '/recommendations', component: recommend_component_1.RecommendComponent, as: 'Recommendations' },
                         { path: '/404', component: missing_component_1.MissingPageComponent, as: 'Missing-Page', useAsDefault: true }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [lightning_service_1.LightningService])
                 ], AppComponent);
                 return AppComponent;
             })();

@@ -12,31 +12,18 @@ import {HomeComponent} from './components/HomeComponent/home.component';
 import {ServicesComponent} from './components/ServicesComponent/services.component';
 import {RecommendComponent} from './components/RecommendComponent/recommend.component';
 import {MissingPageComponent} from './components/MissingPageComponent/missing.component';
+import {LightningService} from './services/LightningService/lightning.service';
 
 @Component({
 	selector: 'app',
 	providers: [
-        ROUTER_PROVIDERS
+        ROUTER_PROVIDERS,
+		LightningService
 		// provide(LocationStrategy, {useClass: HashLocationStrategy})
 	]
 })
 @View({
 	templateUrl: './app/app.html',
-	// template: `
-	// 	<header>
-	// 		AppHeader
-	// 		<ul>
-	// 			<li><a [router-link]="[ '/' ]">Home</a></li>
-	// 			<li><a [router-link]="[ '/services' ]">Services</a></li>
-	// 		</ul>
-	// 	</header>
-
-	// 	<router-outlet></router-outlet>
-
-	// 	<footer>
-	// 		AppFooter
-	// 	</footer>
-	// `,
 	directives: [
 		COMMON_DIRECTIVES,
 		CORE_DIRECTIVES,
@@ -54,7 +41,8 @@ import {MissingPageComponent} from './components/MissingPageComponent/missing.co
 
 export class AppComponent {
 	// 'router-link': RouterLink;
-	// constructor(_routerLink: RouterLink) {
-	// 	this['router-link'] = _routerLink;
-	// }
+	lightningService;
+	constructor(lightningService: LightningService) {
+		this.lightningService = lightningService;
+	}
 }

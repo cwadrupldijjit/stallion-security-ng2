@@ -21,7 +21,8 @@ System.register(['angular2/core'], function(exports_1) {
                 }
                 ServicesComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/components/ServicesComponent/services.html'
+                        templateUrl: 'app/components/ServicesComponent/services.html',
+                        selector: 'services-html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ServicesComponent);
