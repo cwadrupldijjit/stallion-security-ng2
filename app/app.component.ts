@@ -11,13 +11,13 @@ import {ServicesComponent} from './components/ServicesComponent/services.compone
 import {RecommendComponent} from './components/RecommendComponent/recommend.component';
 import {MissingPageComponent} from './components/MissingPageComponent/missing.component';
 import {LightningService} from './services/LightningService/lightning.service';
+import {PerfectParallax} from './components/ParallaxComponent/parallax.component';
 
 @Component({
 	selector: 'app',
 	providers: [
         ROUTER_PROVIDERS,
 		LightningService
-		// provide(LocationStrategy, {useClass: HashLocationStrategy})
 	]
 })
 @View({
@@ -29,7 +29,8 @@ import {LightningService} from './services/LightningService/lightning.service';
 	directives: [
 		COMMON_DIRECTIVES,
 		CORE_DIRECTIVES,
-        ROUTER_DIRECTIVES
+        ROUTER_DIRECTIVES,
+		PerfectParallax
 	]
 })
 @RouteConfig([
@@ -40,8 +41,7 @@ import {LightningService} from './services/LightningService/lightning.service';
 ])
 
 export class AppComponent {
-	// 'router-link': RouterLink;
-	lightningService;
+	lightningService: LightningService;
 	constructor(lightningService: LightningService) {
 		this.lightningService = lightningService;
 	}
