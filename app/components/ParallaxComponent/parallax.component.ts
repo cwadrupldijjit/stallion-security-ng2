@@ -16,8 +16,7 @@ class PerfectParallax {
 	@Input() parallaxRatio: number;
 	@Input() parallaxInitVal: string;
 	@Input() isSpecialVal: boolean;
-	constructor(@Host() cssKey: string) {
-		console.log(cssKey);
+	constructor() {
 	}
 }
 
