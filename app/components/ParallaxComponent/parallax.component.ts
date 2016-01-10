@@ -1,4 +1,4 @@
-import {Directive, Input} from 'angular2/core';
+import {Directive, Host, Input} from 'angular2/core';
 
 @Directive({
 	selector: '[perfect-parallax]',
@@ -8,7 +8,7 @@ import {Directive, Input} from 'angular2/core';
 })
 
 class PerfectParallax {
-	cssKey: string;
+	@Input() cssKey: string;
 	@Input() cssValue: string;
 	@Input() cssValArray: string[];
 	@Input() parallaxCssVal: string;
@@ -16,8 +16,8 @@ class PerfectParallax {
 	@Input() parallaxRatio: number;
 	@Input() parallaxInitVal: string;
 	@Input() isSpecialVal: boolean;
-	constructor() {
-		console.log(this.cssKey);
+	constructor(@Host() cssKey: string) {
+		console.log(cssKey);
 	}
 }
 
