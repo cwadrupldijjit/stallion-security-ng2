@@ -11,7 +11,7 @@ import {ServicesComponent} from './components/ServicesComponent/services.compone
 import {RecommendComponent} from './components/RecommendComponent/recommend.component';
 import {MissingPageComponent} from './components/MissingPageComponent/missing.component';
 import {LightningService} from './services/LightningService/lightning.service';
-import {PerfectParallax} from './components/ParallaxComponent/parallax.component';
+import {PerfectParallax, ParallaxComponent} from './components/ParallaxComponent/parallax.component';
 
 @Component({
 	selector: 'app',
@@ -30,7 +30,8 @@ import {PerfectParallax} from './components/ParallaxComponent/parallax.component
 		COMMON_DIRECTIVES,
 		CORE_DIRECTIVES,
         ROUTER_DIRECTIVES,
-		PerfectParallax
+		PerfectParallax,
+		ParallaxComponent
 	]
 })
 @RouteConfig([
