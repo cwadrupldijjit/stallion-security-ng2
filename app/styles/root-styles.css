@@ -15,6 +15,10 @@ body {
 	background-color: #0E2D47;
 }
 
+*[perfectParallax] {
+	transition: none;
+}
+
 footer {
 	max-height: 300px;
 	overflow: auto;
