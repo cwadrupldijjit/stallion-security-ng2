@@ -22,6 +22,7 @@ import {PerfectParallax, ParallaxComponent} from './components/ParallaxComponent
 })
 @View({
 	templateUrl: './app/app.html',
+	// template: ``,
 	styleUrls: [
 		'./app/styles/app.styles.css',
 		'./app/styles/header.styles.css',
@@ -47,7 +48,7 @@ export class AppComponent {
 	constructor(lightningService: LightningService) {
 		this.lightningService = lightningService;
         this.printStuff = (data) => {
-            console.log(data.style);
+            console.log(data);
         };
 	}
     
