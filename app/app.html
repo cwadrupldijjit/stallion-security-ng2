@@ -33,9 +33,23 @@
 		<router-outlet></router-outlet>
 	</div>
 
-	<footer>
-		<span perfectParallax #parallaxSpan (click)="printStuff(cssKey)" [config]="{cssKey: 'backgroundPositionY', linkedElement: parallaxSpan}">css-key: {{cssKey}}</span><br>
-		<perfect-parallax cssKey="Hello!" #parallaxElem [elem]="parallaxElem" (click)="printStuff(parallaxElem)"></perfect-parallax>
+	<footer #footer>
+		<div perfectParallax #parallaxSpan 
+			[config]="{
+				cssKey: 'backgroundPositionY', 
+				scrollElement: footer, 
+				parallaxElement: parallaxSpan
+			}"
+		>
+			<div>
+				<p>css-key: {{cssKey}}</p>
+				this<br>
+				should<br>
+				be<br>
+				scrollable
+			</div>
+		</div>
+		<!--<perfect-parallax cssKey="Hello!" #parallaxElem [elem]="parallaxElem" (click)="printStuff(parallaxElem)"></perfect-parallax>-->
 		<div class="centered-container">
 			<div>
 				<span class="fa fa-phone"></span> : <a href="tel:8017177330">801-717-7330</a>

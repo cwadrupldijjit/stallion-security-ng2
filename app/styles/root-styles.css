@@ -14,3 +14,13 @@ html, body {
 body {
 	background-color: #0E2D47;
 }
+
+footer {
+	max-height: 300px;
+	overflow: auto;
+}
+
+	footer > div[perfectParallax] {
+		background-image: url('../assets/ws_Rising_horse_1024x768.jpg');
+		height: 300px;
+	}
