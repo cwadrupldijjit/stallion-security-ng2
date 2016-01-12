@@ -42,8 +42,14 @@ import {PerfectParallax, ParallaxComponent} from './components/ParallaxComponent
 ])
 
 export class AppComponent {
+    printStuff;
 	lightningService: LightningService;
 	constructor(lightningService: LightningService) {
 		this.lightningService = lightningService;
+        this.printStuff = (data) => {
+            console.log(data.style);
+        };
 	}
+    
+    
 }
