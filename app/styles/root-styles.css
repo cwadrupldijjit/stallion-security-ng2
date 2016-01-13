@@ -13,18 +13,14 @@ html, body {
 
 body {
 	background-color: #0E2D47;
+	
+	color: whitesmoke;
 }
 
-*[perfectParallax] {
+.relative {
+	position: relative;
+}
+
+*[parallax] {
 	transition: none;
 }
-
-footer {
-	max-height: 300px;
-	overflow: auto;
-}
-
-	footer > div[perfectParallax] {
-		background-image: url('../assets/ws_Rising_horse_1024x768.jpg');
-		height: 300px;
-	}

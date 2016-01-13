@@ -1,0 +1,8 @@
+#home-template {
+	overflow: auto;
+}
+
+	#home-template > div[parallax] {
+		background-image: url('./app/assets/running-horse.jpg');
+		height: 300px;
+	}

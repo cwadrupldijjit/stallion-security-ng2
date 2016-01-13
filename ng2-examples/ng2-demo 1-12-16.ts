@@ -69,7 +69,7 @@ ViewContainerRef, TemplateRef, ContentChildren} from 'angular2/core';
     directives: [UiTabs, UiPane]
 })
 export class DiDemo {
-	//   details: Detail[] = [];
+	  details = [];
 	id: number = 0;
 	addDetail() {
 		this.id++;

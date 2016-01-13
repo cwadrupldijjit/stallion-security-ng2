@@ -1,8 +1,13 @@
 import {Component} from 'angular2/core';
+import {Parallax} from '../../directives/parallax/parallax.directive';
 
 @Component({
 	templateUrl: 'app/components/HomeComponent/home.html',
-	selector: 'home-html'
+	styleUrls: [
+		'app/styles/home.styles.css'
+	],
+	selector: 'home-html',
+	directives: [Parallax]
 })
 
 export class HomeComponent {
