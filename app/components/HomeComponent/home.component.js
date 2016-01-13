@@ -22,6 +22,10 @@ System.register(['angular2/core', '../../directives/parallax/parallax.directive'
             HomeComponent = (function () {
                 function HomeComponent() {
                 }
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', HTMLElement)
+                ], HomeComponent.prototype, "scrollElement", void 0);
                 HomeComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/components/HomeComponent/home.html',
@@ -39,4 +43,4 @@ System.register(['angular2/core', '../../directives/parallax/parallax.directive'
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaG9tZS5jb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJob21lLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6WyJIb21lQ29tcG9uZW50IiwiSG9tZUNvbXBvbmVudC5jb25zdHJ1Y3RvciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBR0E7Z0JBQUFBO2dCQWFBQyxDQUFDQTtnQkFiREQ7b0JBQUNBLGdCQUFTQSxDQUFDQTt3QkFDVkEsV0FBV0EsRUFBRUEsd0NBQXdDQTt3QkFDckRBLFNBQVNBLEVBQUVBOzRCQUNWQSw0QkFBNEJBO3lCQUM1QkE7d0JBQ0RBLFFBQVFBLEVBQUVBLFdBQVdBO3dCQUNyQkEsVUFBVUEsRUFBRUEsQ0FBQ0EsNkJBQVFBLENBQUNBO3FCQUN0QkEsQ0FBQ0E7O2tDQU1EQTtnQkFBREEsb0JBQUNBO1lBQURBLENBQUNBLEFBYkQsSUFhQztZQWJELHlDQWFDLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaG9tZS5jb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJob21lLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6WyJIb21lQ29tcG9uZW50IiwiSG9tZUNvbXBvbmVudC5jb25zdHJ1Y3RvciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBR0E7Z0JBQUFBO2dCQWNBQyxDQUFDQTtnQkFEQUQ7b0JBQUNBLFlBQUtBLEVBQUVBOzttQkFBQ0Esd0NBQWFBLFVBQWNBO2dCQWJyQ0E7b0JBQUNBLGdCQUFTQSxDQUFDQTt3QkFDVkEsV0FBV0EsRUFBRUEsd0NBQXdDQTt3QkFDckRBLFNBQVNBLEVBQUVBOzRCQUNWQSw0QkFBNEJBO3lCQUM1QkE7d0JBQ0RBLFFBQVFBLEVBQUVBLFdBQVdBO3dCQUNyQkEsVUFBVUEsRUFBRUEsQ0FBQ0EsNkJBQVFBLENBQUNBO3FCQUN0QkEsQ0FBQ0E7O2tDQU9EQTtnQkFBREEsb0JBQUNBO1lBQURBLENBQUNBLEFBZEQsSUFjQztZQWRELHlDQWNDLENBQUEifQ==

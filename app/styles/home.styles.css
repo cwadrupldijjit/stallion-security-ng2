@@ -2,7 +2,7 @@
 	overflow: auto;
 }
 
-	#home-template > div[parallax] {
+	#home-banner {
 		background-image: url('./app/assets/running-horse.jpg');
-		height: 300px;
+		/*height: 300px;*/
 	}

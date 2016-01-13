@@ -30,7 +30,7 @@
 	</header>
 
 	<div id="route" class="centered-container">
-		<router-outlet></router-outlet>
+		<router-outlet (load)="parallaxInit(route)"></router-outlet>
 	</div>
 
 	<footer #footer>

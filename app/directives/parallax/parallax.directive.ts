@@ -8,14 +8,32 @@ more than just the parallax effect, and it is able to transform anything about t
 
 */
 interface ParallaxConfig {
+	// the css property (converted to camelCase) that you want changed along with the
+	// value you want to assign to the css key; you should use ParallaxCss if you're 
+	// just defining one key without special properties
 	cssKey?: string;
-	cssValue?: string;
+	
+	// this is used to define the css property you'd like to modify as you scroll
+	// default is backgroundPositionY
 	parallaxCss?: string;
-	parallaxCssVal?: string;
-	parallaxOffset?: number;
+	
+	// ratio defining how fast, slow, or the direction of the changes on scrolling
 	parallaxRatio?: number;
+	
+	// this is the initial value for the parallaxCss property you defined before or,
+	// if you didn't define one, it defaults to 0
 	parallaxInitVal?: number;
+	
+	// the id for the element on the page you'd like to track the scrolling of in the 
+	// case where the element is not available in the current component; 
+	// if no id is defined along with no scrollElement below, 
+	// it defaults to the scrolling of the body
+	scrollId?: string;
+	
+	// the element you'd like to track the scrolling of
 	scrollElement?: HTMLElement;
+	
+	// 
 	parallaxElement?: HTMLElement;
 }
 
@@ -29,10 +47,10 @@ class Parallax implements OnInit {
     cssKey: string;
     cssValue: string;
 	parallaxCss: string;
-    parallaxOffset: number;
     parallaxRatio: number;
     parallaxInitVal: number;
     isSpecialVal: boolean;
+	scrollId: string;
 	hostElement: HTMLElement;
 	scrollElement: HTMLElement;
 	parallaxElement: HTMLElement;
@@ -45,10 +63,9 @@ class Parallax implements OnInit {
 	}
 	
 	ngOnInit() {
-		let cssValArray;
+		let cssValArray: string[];
 		
-		console.log(this.name, 'initialized');
-		console.log(this)
+		// console.log('%s initialized on element', this.name, this.hostElement);
 		
 		for (let prop in this.config) { this[prop] = this.config[prop]; }
 		
@@ -64,8 +81,18 @@ class Parallax implements OnInit {
         this.parallaxInitVal = this.parallaxInitVal ? +this.parallaxInitVal : 0;
 		
 		this.parallaxElement = this.parallaxElement || this.hostElement;
-		
-		this.scrollElement = this.scrollElement || document.getElementsByTagName('body')[0];
+		if (!this.scrollElement) {
+			if (document.getElementById('parallaxScroll'))
+				this.scrollElement = document.getElementById('parallaxScroll');
+			else if (this.scrollId) {
+				this.scrollElement = document.getElementById(this.scrollId);
+				if (!this.scrollElement)
+					throw(`The ID passed through the parallaxConfig (${this.scrollId}) object was not found in the document. Context reported below.`);
+			}
+			else
+				this.scrollElement = document.getElementsByTagName('body')[0]; 
+		}
+			
 		
 		this.evaluateScroll();
 		

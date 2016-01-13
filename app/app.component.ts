@@ -1,4 +1,4 @@
-import {Component, View, provide} from 'angular2/core';
+import {Component, View, Output, EventEmitter, provide} from 'angular2/core';
 import {COMMON_DIRECTIVES,
 		CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig,
@@ -42,14 +42,16 @@ import {Parallax} from './directives/parallax/parallax.directive';
 ])
 
 export class AppComponent {
-    printStuff;
-	lightningService: LightningService;
-	constructor(lightningService: LightningService) {
-		this.lightningService = lightningService;
-        this.printStuff = (data) => {
-            console.log(data);
-        };
+    // @Output() routeScroll: HTMLElement;
+	printStuff(data) {
+		console.log(data);
+	};
+	
+	parallaxInit(elem) {
+		console.log(elem);
+		// this.routeScroll = elem;
 	}
-    
-    
+	
+	constructor(private lightningService: LightningService) {
+	}
 }

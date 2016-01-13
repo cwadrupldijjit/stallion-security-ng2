@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Parallax} from '../../directives/parallax/parallax.directive';
 
 @Component({
@@ -14,4 +14,5 @@ export class HomeComponent {
 	public siteWelcome: string;
 	public welcomeParagraph: string;
 	public bannerImage: string;
+	@Input() scrollElement: HTMLElement;
 }

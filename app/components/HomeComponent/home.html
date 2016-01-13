@@ -1,18 +1,20 @@
-<div class="route-container" id="home-template" #homeRoute>
-	<div parallax #homeBanner 
-		[config]="{
-			parallaxInitVal: -250,
-			scrollElement: homeRoute, 
-			parallaxElement: homeBanner
-		}"
-	></div>
+<div class="route-container" id="home-template">
+	<div class="ten-to-three">
+		<div id="home-banner" parallax #homeBanner 
+			[config]="{
+				scrollId: 'route',
+				parallaxInitVal: -250, 
+				parallaxElement: homeBanner
+			}"
+		></div>
+	</div>
 	
 	<h3 id="site-welcome" class="relative" #siteWelcome
 		parallax [config]="{
+			scrollId: 'route',
 			parallaxRatio: .6,
 			parallaxCss: 'top',
 			parallaxInitVal: -70,
-			scrollElement: homeRoute,
 			parallaxElement: siteWelcome
 		}"
 	>
