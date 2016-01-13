@@ -10,7 +10,7 @@ more than just the parallax effect, and it is able to transform anything about t
 interface ParallaxConfig {
 	// the css property (converted to camelCase) that you want changed along with the
 	// value you want to assign to the css key; you should use ParallaxCss if you're 
-	// just defining one key without special properties
+	// just defining one property without special values
 	cssKey?: string;
 	
 	// this is used to define the css property you'd like to modify as you scroll
@@ -20,8 +20,8 @@ interface ParallaxConfig {
 	// ratio defining how fast, slow, or the direction of the changes on scrolling
 	parallaxRatio?: number;
 	
-	// this is the initial value for the parallaxCss property you defined before or,
-	// if you didn't define one, it defaults to 0
+	// this is the initial value in pixels for the parallaxCss property you defined
+	// before or, if you didn't define one, it defaults to 0
 	parallaxInitVal?: number;
 	
 	// the id for the element on the page you'd like to track the scrolling of in the 
@@ -30,10 +30,12 @@ interface ParallaxConfig {
 	// it defaults to the scrolling of the body
 	scrollId?: string;
 	
-	// the element you'd like to track the scrolling of
+	// the element in the current component that you'd like the directive to track its 
+	// position as it scrolls;  gets assigned to the body if nothing is defined
 	scrollElement?: HTMLElement;
 	
-	// 
+	// the element that you'd like the effects from scrolling the scrollElement applied 
+	// to; essentially the element that moves as you scroll
 	parallaxElement?: HTMLElement;
 }
 
@@ -57,8 +59,10 @@ class Parallax implements OnInit {
 	
 	private evaluateScroll = () => {
 		let resultVal, calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
-		if (this.isSpecialVal) resultVal = this.cssValue + '(' + calcVal + 'px)';
-		else resultVal = calcVal + 'px';
+		if (this.isSpecialVal)
+			resultVal = this.cssValue + '(' + calcVal + 'px)';
+		else 
+			resultVal = calcVal + 'px';
 		this.parallaxElement.style[this.cssKey] = resultVal;
 	}
 	
@@ -87,7 +91,7 @@ class Parallax implements OnInit {
 			else if (this.scrollId) {
 				this.scrollElement = document.getElementById(this.scrollId);
 				if (!this.scrollElement)
-					throw(`The ID passed through the parallaxConfig (${this.scrollId}) object was not found in the document. Context reported below.`);
+					throw(`The ID passed through the parallaxConfig ('${this.scrollId}'') object was not found in the document. Context reported below.`);
 			}
 			else
 				this.scrollElement = document.getElementsByTagName('body')[0]; 
