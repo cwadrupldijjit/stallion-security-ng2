@@ -1,3 +1,5 @@
+// ng2-parallax
+
 import {Directive, ElementRef, Host, Input, OnInit} from 'angular2/core';
 
 /* 
@@ -28,10 +30,16 @@ interface ParallaxConfig {
 	// case where the element is not available in the current component; 
 	// if no id is defined along with no scrollElement below, 
 	// it defaults to the scrolling of the body
-	scrollId?: string;
+	scrollerId?: string;
 	
-	// scrolling direction (x or y) you'd like the parallaxElement to be effected by
-	scrollDirection: string;
+	// the upper constraint for the css transformation
+	maxValue?: number;
+	
+	// the lower constraint for the css transformation
+	minValue?: number;
+	
+	// the unit (e.g. 'px', 'em', '%', 'vh', etc.) you want for the parallax effect to use 
+	cssUnit?: string;
 	
 	// the element in the current component that you'd like the directive to track its 
 	// position as it scrolls;  gets assigned to the body if nothing is defined
@@ -40,6 +48,9 @@ interface ParallaxConfig {
 	// the element that you'd like the effects from scrolling the scrollElement applied 
 	// to; essentially the element that moves as you scroll
 	parallaxElement?: HTMLElement;
+	
+	// what you want to call it to find the particular instance of it if you need to debug
+	name: string;
 }
 
 @Directive({
@@ -48,16 +59,18 @@ interface ParallaxConfig {
 
 class Parallax implements OnInit {
 	name: string = 'parallaxDirective';
+	
     @Input() config: ParallaxConfig;
     cssKey: string = 'backgroundPosition';
-    cssValue: string;
 	parallaxCss: string = 'backgroundPositionY';
 	parallaxAxis: string = 'Y';
-    parallaxRatio: number = 1.1;
+    parallaxRatio: number = -.7;
     parallaxInitVal: number = 0;
+	scrollerId: string;
+	
+    cssValue: string;
     isSpecialVal: boolean = false;
-	scrollId: string;
-	// scrollDirection: string = 'y';
+	
 	hostElement: HTMLElement;
 	scrollElement: HTMLElement;
 	parallaxElement: HTMLElement;
@@ -66,11 +79,7 @@ class Parallax implements OnInit {
 		let resultVal: string;
 		let calcVal: number;
 		
-		// if (this.scrollDirection === 'x') {
-		// 	calcVal = this.scrollElement.scrollLeft * this.parallaxRatio + this.parallaxInitVal;
-		// } else {
-			calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
-		// }
+		calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
 		
 		if (this.cssKey === 'backgroundPosition') {
 			if (this.parallaxAxis === 'X') {
@@ -102,12 +111,6 @@ class Parallax implements OnInit {
 			this.parallaxCss = 'backgroundPosition';
 		}
 		
-		// if (typeof this.scrollDirection === 'string') {
-		// 	if (this.scrollDirection.toLowerCase() === 'x')
-		// 		this.scrollDirection = 'x';
-		// 	else this.scrollDirection = 'y';
-		// }
-		
         cssValArray = this.parallaxCss.split(':');
         this.cssKey = cssValArray[0];
         this.cssValue = cssValArray[1];
@@ -122,11 +125,11 @@ class Parallax implements OnInit {
 		if (!this.scrollElement) {
 			if (document.getElementById('parallaxScroll'))
 				this.scrollElement = document.getElementById('parallaxScroll');
-			else if (this.scrollId) {
+			else if (this.scrollerId) {
 				try {
-					this.scrollElement = document.getElementById(this.scrollId);
+					this.scrollElement = document.getElementById(this.scrollerId);
 					if (!this.scrollElement)
-						throw(`The ID passed through the parallaxConfig ('${this.scrollId}') object was not found in the document.  Defaulting to watch scrolling of the body.`);
+						throw(`The ID passed through the parallaxConfig ('${this.scrollerId}') object was not found in the document.  Defaulting to watch scrolling of the body.`);
 				} catch(e) {
 					console.warn(e);
 					this.scrollElement = document.getElementsByTagName('body')[0];

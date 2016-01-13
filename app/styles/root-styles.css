@@ -35,17 +35,24 @@ body {
 	overflow: hidden;
 }
 
-.ten-to-three {
+.proportional {
 	position: relative;
 	width: 100%;
 	height: 0;
-	padding-bottom: 30%;
 }
 
-	.ten-to-three > * {
+	.proportional > * {
 		position: absolute;
 		top: 0;
 		left: 0;
 		height: 100%;
 		width: 100%;
 	}
+	
+.ten-to-three {
+	padding-bottom: 30%;
+}
+
+.ten-to-four {
+	padding-bottom: 40%;
+}

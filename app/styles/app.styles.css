@@ -84,15 +84,9 @@
 		}*/
 		
 #route {
-	padding-top: 49px;
-	
-	flex: 2;
-	/*flex-grow: 1;
-	flex-shrink: 1;*/
+	flex: 1;
 	
 	overflow: auto;
-	
-	/*height: calc(100% - 59 - 178 - 49);*/
 }
 
 

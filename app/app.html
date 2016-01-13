@@ -8,26 +8,26 @@
 			<button ng-click="mc.openMain(console.log('clicked'))" id="menu-button-small"><span class="fa fa-bars"></span></button>
 		</div>-->
 		
-		<div id="main-menu" class="centered-container">
-			<nav class="menu-options">
-				<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
-			</nav>
-			
-			<nav class="menu-options">
-				<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
-			</nav>
-			
-			<nav class="menu-options">
-				<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
-			</nav>
-			
-			<!--<nav class="menu-options">
-				<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
-			</nav>-->
-		</div>
-		
 		<canvas id="lightning-border"></canvas>
 	</header>
+		
+	<div id="main-menu" class="centered-container">
+		<nav class="menu-options">
+			<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
+		</nav>
+		
+		<nav class="menu-options">
+			<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
+		</nav>
+		
+		<nav class="menu-options">
+			<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
+		</nav>
+		
+		<!--<nav class="menu-options">
+			<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
+		</nav>-->
+	</div>
 
 	<div id="route" class="centered-container">
 		<router-outlet (load)="parallaxInit(route)"></router-outlet>
