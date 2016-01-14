@@ -67,6 +67,9 @@ class Parallax implements OnInit {
     parallaxRatio: number = -.7;
     parallaxInitVal: number = 0;
 	scrollerId: string;
+	maxValue: number;
+	minValue: number;
+	cssUnit: string = 'px';
 	
     cssValue: string;
     isSpecialVal: boolean = false;
@@ -81,16 +84,21 @@ class Parallax implements OnInit {
 		
 		calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
 		
+		if (this.maxValue && calcVal >= this.maxValue)
+			calcVal = this.maxValue;
+		else if (this.minValue && calcVal <= this.minValue)
+			calcVal = this.minValue;
+		
 		if (this.cssKey === 'backgroundPosition') {
 			if (this.parallaxAxis === 'X') {
-				resultVal = calcVal + 'px 0';
+				resultVal = calcVal + this.cssUnit + ' 0';
 			} else {
-				resultVal = '0 ' + calcVal + 'px';
+				resultVal = '0 ' + calcVal + this.cssUnit;
 			}
 		} else if (this.isSpecialVal) {
-			resultVal = this.cssValue + '(' + calcVal + 'px)';
+			resultVal = this.cssValue + '(' + calcVal + this.cssUnit + ')';
 		} else { 
-			resultVal = calcVal + 'px';
+			resultVal = calcVal + this.cssUnit;
 		}
 		this.parallaxElement.style[this.cssKey] = resultVal;
 	}

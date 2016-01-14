@@ -1,7 +1,16 @@
 <div id="app-html">
-	<header (load)="lightningService.initialize">
+	<header #header parallax [config]="{
+		parallaxCss: 'height',
+		minValue: 50,
+		maxValue: 178,
+		parallaxInitVal: 178,
+		parallaxElement: header,
+		scrollElement: route
+	}">
 		<div id="centered-logo-holder">
-			<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
+			<div>
+				<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
+			</div>
 		</div>
 		
 		<!--<div class="large-screen-closed pull-right">
@@ -29,8 +38,8 @@
 		</nav>-->
 	</div>
 
-	<div id="route" class="centered-container">
-		<router-outlet (load)="parallaxInit(route)"></router-outlet>
+	<div id="route" class="centered-container" #route>
+		<router-outlet></router-outlet>
 	</div>
 
 	<footer #footer>

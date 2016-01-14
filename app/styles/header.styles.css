@@ -1,7 +1,5 @@
 header {
 	position: relative;
-	/*left: 0;
-	top: 0;*/
 	
 	z-index: 150;
 	
@@ -26,13 +24,24 @@ header {
 		justify-content: space-around;
 	}
 	
-		#centered-logo-holder > img {
+		#centered-logo-holder > * {
 			position: relative;
 			left: -50%;
 			top: 2px;
 			
 			height: 100%;
+			width: 0;
+			
+			padding-right: 57%;
 		}
+		
+			#centered-logo-holder > * > img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
 	
 	#lightning-border {
 		width: 100%;
