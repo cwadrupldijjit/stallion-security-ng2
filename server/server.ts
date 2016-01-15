@@ -1,3 +1,5 @@
+/// <reference path="config/dependencies.ts" />
+
 import {dependencies} from './config/dependencies';
 import {config} from './config/config';
 import {middlewareLoader} from './config/middleware';
