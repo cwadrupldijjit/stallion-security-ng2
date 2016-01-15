@@ -58,4 +58,4 @@ gulp.task('ts-public', tsPublic);
 gulp.task('sass', sassCompile);
 gulp.task('watch', watcher);
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['ts-server', 'ts-public', 'sass', 'watch']);
