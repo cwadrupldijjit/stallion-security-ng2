@@ -1,4 +1,5 @@
-import express = require('express');
+import {dependencies} from './dependencies';
+const {express, helmet, bodyParser, session} = dependencies;
 
 const pathToPublic = __dirname + '/../public';
 

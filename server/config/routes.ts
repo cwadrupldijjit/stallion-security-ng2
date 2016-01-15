@@ -1,4 +1,4 @@
-import express = require('express');
+import {dependencies} from './dependencies';
 
 const routes = (app) => {
 };

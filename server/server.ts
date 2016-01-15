@@ -1,7 +1,9 @@
-import express = require('express');
+import {dependencies} from './config/dependencies';
 import {config} from './config/config';
 import {middlewareLoader} from './config/middleware';
 import {routes} from './config/routes';
+
+const {express} = dependencies;
 
 const app = express();
 
