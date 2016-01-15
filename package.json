@@ -6,13 +6,18 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "sc": "gulp",
+	"gulp:all": "gulp",
+    "gulp:w": "gulp watch",
+    "gulp:tsp": "gulp ts-public",
+    "gulp:tss": "gulp ts-server",
     "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" \"npm run sc\" ",
+	"server": "nodemon ./server/server.js",
+    "original": "concurrent \"npm run tsc:w\" \"npm run lite\" \"npm run gulp:w\" ",
+    "start": "concurrent \"npm run gulp:all\" \"npm run server\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "me",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.0",
     "bcryptjs": "^2.3.0",

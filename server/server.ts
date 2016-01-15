@@ -5,6 +5,6 @@ import {routes} from './config/routes';
 
 const app = express();
 
-app.use();
+// app.use();
 
-app.listen;
+app.listen(8000, () => {console.log('listening')});

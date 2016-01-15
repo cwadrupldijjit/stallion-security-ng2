@@ -7,13 +7,26 @@ var serverTsPath = 'server/**/*.ts',
 	publicTsPath = 'public/**/*.ts',
 	publicSassPath = 'public/app/**/*.scss';
 
+var tsconfig = {
+	target: 'ES5',
+	moduleResolution: 'node',
+	noImplicitAny: true,
+	removeComments: false,
+	inlineSourceMap: true
+}
+
 function tsServer() {
+	var serverTsConfig = Object.create(tsconfig);
+	serverTsConfig.module = 'commonjs';
+	console.log(serverTsConfig.noImplicitAny);
+	
 	gulp.src(serverTsPath)
-		.pipe(tsc({
-			noImplicitAny: false,
-			module: 'commonjs',
-			target: 'ES6'
-		}))
+		// .pipe(tsc({
+		// 	noImplicitAny: false,
+		// 	module: 'commonjs',
+		// 	target: 'ES5'
+		// }))
+		.pipe(tsc(serverTsConfig))
 		.pipe(gulp.dest('server'));
 }
 
