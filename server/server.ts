@@ -1,10 +1,11 @@
 import express = require('express');
 import {config} from './config/config';
+import {middlewareLoader} from './config/middleware';
 import {routes} from './config/routes';
-// import * as express from 'express';
 
 const app = express();
 
-// app.use();
+middlewareLoader(app);
+routes(app);
 
 app.listen(8000, () => {console.log('listening')});
