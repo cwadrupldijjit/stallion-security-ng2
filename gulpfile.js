@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	tsc = require('gulp-typescript'),
 	sourcemaps = require('gulp-sourcemaps'),
+	uglify = require('gulp-uglify'),
 	watch = require('gulp-watch');
 
 var serverTsPath = 'server/**/*.ts',
@@ -13,12 +14,17 @@ var tsconfig = {
 	moduleResolution: 'node',
 	noImplicitAny: false,
 	removeComments: false
-}
+};
+
+var serverTsConfig = new Object(tsconfig);
+	serverTsConfig.module = 'commonjs';
+
+var publicTsConfig = new Object(tsconfig);
+	publicTsConfig.module = 'system';
+	publicTsConfig.emitDecoratorMetadata = true;
+	publicTsConfig.experimentalDecorators = true;
 
 function tsServer() {
-	var serverTsConfig = new Object(tsconfig);
-	serverTsConfig.module = 'commonjs';
-	
 	gulp.src(serverTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(serverTsConfig))
@@ -27,16 +33,23 @@ function tsServer() {
 }
 
 function tsPublic() {
-	var publicTsConfig = new Object(tsconfig);
-	publicTsConfig.module = 'system';
-	publicTsConfig.emitDecoratorMetadata = true;
-	publicTsConfig.experimentalDecorators = true;
-	
 	gulp.src(publicTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(publicTsConfig))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('public'));
+}
+
+function tsPublicMin() {
+	var publicTsConfigMin = new Object(tsconfig);
+	publicTsConfigMin.removeComments = true;
+	
+	gulp.src(publicTsPath)
+		.pipe(sourcemaps.init())
+			.pipe(tsc(publicTsConfigMin))
+			.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('public-uglified'))
 }
 
 function sassCompile() {
@@ -47,6 +60,15 @@ function sassCompile() {
 		.pipe(gulp.dest('./public/app'))
 }
 
+function sassCompileMin() {
+	gulp.src(publicSassPath)
+		.pipe(sourcemaps.init())
+			.pipe(sass()).on('error', sass.logError)
+			.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./public-uglified/app'))
+}
+
 function watcher() {
 	watch(serverTsPath, tsServer);
 	watch(publicTsPath, tsPublic);
@@ -55,7 +77,11 @@ function watcher() {
 
 gulp.task('ts-server', tsServer);
 gulp.task('ts-public', tsPublic);
+gulp.task('ts-public-min', tsPublicMin);
 gulp.task('sass', sassCompile);
+gulp.task('sass-min', sassCompileMin);
 gulp.task('watch', watcher);
+gulp.task('dev', ['ts-server', 'ts-public', 'sass', 'watch']);
+gulp.task('prod', ['ts-public-min', 'sass-min']);
 
-gulp.task('default', ['ts-server', 'ts-public', 'sass', 'watch']);
+gulp.task('default', ['']);
