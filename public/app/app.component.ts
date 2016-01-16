@@ -45,10 +45,12 @@ const logoResize = new EventEmitter();
 ])
 
 class AppComponent implements OnInit, OnDestroy {
-	resizeSubscription = logoResize.subscribe((event) => {
+	eventFunc = (event) => {
 		this.adjustLogoSize(document.getElementById('logo-lg'))
 		// console.log('resize event');
-	}); 
+	}
+	
+	resizeSubscription = logoResize.subscribe(this.eventFunc);
 	
 	ngOnInit() {
 	};
@@ -61,9 +63,10 @@ class AppComponent implements OnInit, OnDestroy {
 		console.log(data);
 	};
 	
-	adjustLogoSize(logoElement: HTMLElement = document.getElementById('logo-lg')) {
+	adjustLogoSize = (logoElement: HTMLElement = document.getElementById('logo-lg')) => {
 		setTimeout(() => {
 			logoElement.style.width = (logoElement.offsetHeight * 2.231428571428571) + 'px';
+			// console.log(this)
 		}, 0);
 	};
 	

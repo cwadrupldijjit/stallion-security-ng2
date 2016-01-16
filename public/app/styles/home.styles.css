@@ -1,9 +1,18 @@
-#home-template {
-	/*overflow: auto;*/
+/*#home-template {
+	position: relative;
+	overflow: auto;
 	overflow: hidden;
-}
+	z-index: 100;
+}*/
 
 	#home-banner {
 		background-image: url('./app/assets/dawn-190055.jpg');
-		/*height: 300px;*/
+		box-shadow: 0 0 20px rgba(0,0,0,.8), 0 0 10px rgba(0,0,0,.8);
+	}
+	
+	#site-welcome {
+		padding: 10px 20px;
+		background-color: rgba(0,0,0,.5);
+		box-shadow: 0 0 10px rgba(0,0,0,1);
+		text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,1);
 	}
