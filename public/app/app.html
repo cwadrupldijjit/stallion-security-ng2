@@ -1,11 +1,10 @@
 <div id="app-html">
-	<header #header parallax [config]="{
+	<header #header id="header" parallax [config]="{
 		parallaxCss: 'height',
 		minValue: 80,
 		maxValue: 178,
 		parallaxInitVal: 178,
-		parallaxRatio: -4,
-		parallaxElement: header,
+		parallaxRatio: -2,
 		scrollElement: route,
 		cb: eventFunc
 	}">
@@ -38,7 +37,7 @@
 		</nav>-->
 	</div>
 
-	<div id="route" class="centered-container" #route>
+	<div id="route" class="centered-container" data-slimscroll="" #route>
 		<router-outlet></router-outlet>
 	</div>
 

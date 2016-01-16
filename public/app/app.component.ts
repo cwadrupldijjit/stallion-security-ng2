@@ -1,6 +1,9 @@
 import { Component, 
 		 View,
 		 OnInit,
+		 AfterContentInit,
+		 AfterViewInit,
+		 AfterViewChecked,
 		 OnDestroy,
 		 EventEmitter } from 'angular2/core';
 import { COMMON_DIRECTIVES,
@@ -14,7 +17,7 @@ import { RecommendComponent } from './components/RecommendComponent/recommend.co
 import { MissingPageComponent } from './components/MissingPageComponent/missing.component';
 import { LightningService } from './services/LightningService/lightning.service';
 import { Parallax } from './directives/parallax/parallax.directive';
-import { SlimScroll } from './slimscroll';
+import { slimScroll } from './slimscroll';
 
 const logoResize = new EventEmitter();
 
@@ -45,16 +48,43 @@ const logoResize = new EventEmitter();
 	{ path: '/404',				component: MissingPageComponent, as: 'Missing-Page',	useAsDefault: true }
 ])
 
-class AppComponent implements OnInit, OnDestroy {
+class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
 	eventFunc = (event) => {
-		this.adjustLogoSize(document.getElementById('logo-lg'))
+		this.adjustLogoSize(document.getElementById('logo-lg'));
 		// console.log('resize event');
 	}
 	
 	resizeSubscription = logoResize.subscribe(this.eventFunc);
 	
+	customScroll;
+	
 	ngOnInit() {
 	};
+	
+	ngAfterContentInit() {
+		// debugger;
+		let scrollbarCustomizations = {
+			scrollBarClass: 'scrollbar'
+		};
+		// document.getElementById('route').addEventListener('load', () => {
+			console.log('slimscroll should initialize...')
+			this.customScroll = Object.create(slimScroll.bind(null, document.getElementById('route'), scrollbarCustomizations));
+			
+			console.log('customScroll');
+			
+			// window.addEventListener('resize', () => {
+			// 	this.customScroll.resetValues}, false);
+		// }, false);
+	};
+	
+	ngAfterViewInit() {
+		// debugger;
+		console.log('AfterViewInit')
+	};
+	
+	ngAfterViewChecked() {
+		debugger;
+	}
 	
 	ngOnDestroy() {
 		this.resizeSubscription.dispose();

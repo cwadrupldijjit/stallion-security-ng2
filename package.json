@@ -11,7 +11,7 @@
     "gulp:tsp": "gulp ts-public",
     "gulp:tss": "gulp ts-server",
     "gulp:comp": "gulp ts-server ts-public sass",
-	"gulp:dev": "gulp dev",
+    "gulp:dev": "gulp dev",
     "lite": "lite-server",
     "server": "nodemon ./server/server.js",
     "original": "concurrent \"npm run tsc:w\" \"npm run lite\" \"npm run gulp:w\" ",
@@ -34,6 +34,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
+    "socket.io": "^1.4.4",
     "systemjs": "0.19.6",
     "zone.js": "0.5.10"
   },

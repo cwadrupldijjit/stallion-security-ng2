@@ -1,32 +1,12 @@
-interface I {
-	E?;
-	h?;
-	sH?;
-	sH1?;
-	sP?;
-	sP1?;
-	sbh?;
-	rP1?;
-	x?;
-	reposition?;
-	firstY?;
-	previousTop?;
-}
-
-interface Q {
-	
-}
-
-var SlimScroll = function(C: HTMLElement, payload){
-    var i: I = {},
+var slimScroll = function(C: HTMLElement, payload){
+	console.log('run');
+    var i = {},
         w = "wrapper",s = "scrollBar",S = "scrollBarContainer",a = "",m = "",l="data-slimscroll",
         // properties
         oT = "offsetTop",sT = "scrollTop",pE = "parentElement",pes= "previousElementSibling", 
         iH = "innerHTML",cT = "currentTarget",sK = "scroll-k",U = "%",d = ".",
-        // IE8 properties 
-        // (Dev note: remove below variables from all over the code to exclude IE8 compatibility)
-        pN = "parentNode",pS = "previousSibling",sE = "srcElement",
-        assignValues = function(k){
+        // IE8 properties
+        assignValues = function(k?){
             var q = i.E;
             i.h = i[S].offsetHeight;
             i.sH = i[w].scrollHeight;
@@ -64,13 +44,13 @@ var SlimScroll = function(C: HTMLElement, payload){
             return d;
         },
         setScroll = function(e){
-            var e = e || event,el = e.target || event[sE],
-                p = el[pE] || el[pN];
+            var e = e || event,el = e.target,
+                p = el[pE];
             var q = i.E;
 
             if(!i || p === i[S]) return;
             var eY = e.pageY || event.clientY,
-                top = ((eY - getTop(i[w][pE] || i[w][pN]))/i.h * 100) - i.sP1/2;
+                top = ((eY - getTop(i[w][pE]))/i.h * 100) - i.sP1/2;
             if(top > i.rP1) top = i.rP1;
             else if(top < 0) top = 0;
             i[s].style.top = top + U;
@@ -86,7 +66,7 @@ var SlimScroll = function(C: HTMLElement, payload){
                 else if (sel.empty) sel.empty();
             }
             var e = e || event,
-                el = e[cT] || e[sE];
+                el = e[cT];
 
             addEvent('mousemove', document, moveScroll);
             addEvent('mouseup', document, endScroll);
@@ -151,7 +131,7 @@ var SlimScroll = function(C: HTMLElement, payload){
             return el.getBoundingClientRect().top + (t?t:document.body[sT]);
         },
         insertCss = function(){
-            if(SlimScroll.inserted){
+            if(slimScroll.inserted){
                 return;
             }
             // Inserting css rules
@@ -186,7 +166,7 @@ var SlimScroll = function(C: HTMLElement, payload){
             else{
                 style.styleSheet.cssText = slim+">div{"+w+"}"+slim+">div+div"+"{"+S+"}"+slim+">div+div>div{"+s+"}";
             }
-            window.slimScroll.inserted = true;
+            slimScroll.inserted = true;
         },
         // Initial function
         init = function(){
@@ -228,4 +208,4 @@ var SlimScroll = function(C: HTMLElement, payload){
     }
 };
 
-export { SlimScroll };
+export { slimScroll };

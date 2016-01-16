@@ -97,7 +97,7 @@ class Parallax implements OnInit {
 	@Input() cb_context: any = null;
 	@Input() cb_args: any[] = [];
 	
-	parallaxStyles: {};
+	parallaxStyles: {} = {};
 	
     private cssValue: string;
     private isSpecialVal: boolean = false;
@@ -136,7 +136,7 @@ class Parallax implements OnInit {
 				this.cb.apply(this.cb_context, this.cb_args);
 			}
 			
-			this.parallaxStyles[this.cssKey] = resultVal;
+			this.parallaxElement.style[this.cssKey] = resultVal;
 		}
 	}
 	
