@@ -1,9 +1,11 @@
 import { Component, 
 		 Input, 
 		 OnInit,
+		 AfterContentInit,
 		 ElementRef } from 'angular2/core';
 import { Parallax } from '../../directives/parallax/parallax.directive';
-import { logoResize } from '../../app.component';
+import { logoResize,
+		 routeLoaded } from '../../app.component';
 
 @Component({
 	templateUrl: 'app/components/HomeComponent/home.html',
@@ -14,13 +16,18 @@ import { logoResize } from '../../app.component';
 	directives: [Parallax]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterContentInit {
 	ngOnInit() {
 		logoResize.emit(null);
 		
 		document.getElementById('home-banner').style.backgroundImage = 'url(' + this.bannerImage + ')';
 		
 		document.getElementById('welcome-text').innerHTML = this.welcomeText;
+	}
+	
+	ngAfterContentInit() {
+		routeLoaded.emit(null);
+		debugger;		
 	}
 	
 	hostElement: HTMLElement;

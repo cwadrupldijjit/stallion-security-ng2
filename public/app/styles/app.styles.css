@@ -10,7 +10,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-#app-html > #route {
+#app-html > .route {
 	flex: 1;
 }
 
@@ -79,12 +79,17 @@
 			text-align: center;
 		}*/
 		
-#route {
+.route-wrapper {
+	position: relative;
 	flex: 1;
 	
 	overflow: auto;
 	
 	/*box-shadow: 0 0 10px rgba(0,0,0,.5);*/
+}
+
+#route {
+	overflow: hidden;
 }
 
 

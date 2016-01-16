@@ -19,7 +19,8 @@ import { LightningService } from './services/LightningService/lightning.service'
 import { Parallax } from './directives/parallax/parallax.directive';
 import { slimScroll } from './slimscroll';
 
-const logoResize = new EventEmitter();
+const logoResize = new EventEmitter(),
+	  routeLoaded = new EventEmitter();
 
 @Component({
 	selector: 'app',
@@ -52,42 +53,53 @@ class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterView
 	eventFunc = (event) => {
 		this.adjustLogoSize(document.getElementById('logo-lg'));
 		// console.log('resize event');
-	}
+	};
+	
+	routeLoadHandler = (event) => {
+		// debugger;
+		let routeElem = document.getElementsByClassName('route')[0];
+		if (routeElem.scrollHeight > routeElem.offsetHeight) {
+			let scrollbarCustomizations = {
+				scrollBarClass: 'scrollbar',
+				scrollBarContainerClass: 'scrollbar-container',
+				scrollBarMinHeight: 30,
+				wrapperClass: 'wrapper route-wrapper centered-container',
+				wrapperId: 'route'
+			};
+			var elem: Attr;
+			// elem.
+			// console.log('slimscroll should initialize...')
+			this.customScroll = new slimScroll(document.getElementsByClassName('route')[0], scrollbarCustomizations);
+			console.log(routeElem.firstElementChild.setAttribute('id', 'route'))
+			// console.log('customScroll', this.customScroll);
+			
+			window.addEventListener('resize', () => {
+				this.customScroll.resetValues()
+			}, false);
+		}
+	};
 	
 	resizeSubscription = logoResize.subscribe(this.eventFunc);
+	routeLoadSubscription;
 	
 	customScroll;
 	
 	ngOnInit() {
+		this.routeLoadSubscription = routeLoaded.subscribe(this.routeLoadHandler);
 	};
 	
 	ngAfterContentInit() {
-		// debugger;
-		let scrollbarCustomizations = {
-			scrollBarClass: 'scrollbar'
-		};
-		// document.getElementById('route').addEventListener('load', () => {
-			console.log('slimscroll should initialize...')
-			this.customScroll = Object.create(slimScroll.bind(null, document.getElementById('route'), scrollbarCustomizations));
-			
-			console.log('customScroll');
-			
-			// window.addEventListener('resize', () => {
-			// 	this.customScroll.resetValues}, false);
-		// }, false);
 	};
 	
 	ngAfterViewInit() {
-		// debugger;
-		console.log('AfterViewInit')
 	};
 	
 	ngAfterViewChecked() {
-		debugger;
 	}
 	
 	ngOnDestroy() {
 		this.resizeSubscription.dispose();
+		this.routeLoadSubscription.dispose();
 	};
 	
 	printStuff(data) {
@@ -105,4 +117,4 @@ class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterView
 	};
 }
 
-export {logoResize, AppComponent};
+export {logoResize, routeLoaded, AppComponent};

@@ -35,7 +35,7 @@ body {
 	font-size: 1.1em;
 }
 
-/*#route {
+/*.route {
 	overflow: hidden;
 }*/
 
@@ -65,3 +65,7 @@ body {
 .scrollbar {
 	background-color: green;
 }
+
+	.scrollbar-container {
+		background-color: whitesmoke;
+	}
