@@ -8,6 +8,12 @@
 		
 		<link rel="stylesheet" href="app/styles/root-styles.css">
 		<link rel="stylesheet" href="app/styles/font-awesome.css">
+        
+        <base href="/">
+	</head>
+	
+	<body>
+		<app> Loading... </app>
 
 		<!-- 1. Load libraries -->
 		<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
@@ -30,11 +36,5 @@
 			System.import('app/boot')
 				  .then(null, console.error.bind(console));
 		</script>
-        
-        <base href="/">
-	</head>
-	
-	<body>
-		<app> Loading... </app>
 	</body>
 </html>

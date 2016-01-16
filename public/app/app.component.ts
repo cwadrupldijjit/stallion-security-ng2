@@ -1,17 +1,17 @@
-import {Component, View, Output, EventEmitter, provide} from 'angular2/core';
-import {COMMON_DIRECTIVES,
-		CORE_DIRECTIVES} from 'angular2/common';
-import {RouteConfig,
-		ROUTER_DIRECTIVES,
-		ROUTER_PROVIDERS,
-		LocationStrategy,
-		HashLocationStrategy } from 'angular2/router';
-import {HomeComponent} from './components/HomeComponent/home.component';
-import {ServicesComponent} from './components/ServicesComponent/services.component';
-import {RecommendComponent} from './components/RecommendComponent/recommend.component';
-import {MissingPageComponent} from './components/MissingPageComponent/missing.component';
-import {LightningService} from './services/LightningService/lightning.service';
-import {Parallax} from './directives/parallax/parallax.directive';
+import { Component, 
+		 View,
+		 OnInit } from 'angular2/core';
+import { COMMON_DIRECTIVES,
+		 CORE_DIRECTIVES } from 'angular2/common';
+import { RouteConfig,
+		 ROUTER_DIRECTIVES,
+		 ROUTER_PROVIDERS } from 'angular2/router';
+import { HomeComponent } from './components/HomeComponent/home.component';
+import { ServicesComponent } from './components/ServicesComponent/services.component';
+import { RecommendComponent } from './components/RecommendComponent/recommend.component';
+import { MissingPageComponent } from './components/MissingPageComponent/missing.component';
+import { LightningService } from './services/LightningService/lightning.service';
+import { Parallax } from './directives/parallax/parallax.directive';
 
 @Component({
 	selector: 'app',
@@ -22,7 +22,6 @@ import {Parallax} from './directives/parallax/parallax.directive';
 })
 @View({
 	templateUrl: './app/app.html',
-	// template: ``,
 	styleUrls: [
 		'./app/styles/app.styles.css',
 		'./app/styles/header.styles.css',
@@ -41,17 +40,28 @@ import {Parallax} from './directives/parallax/parallax.directive';
 	{ path: '/404',				component: MissingPageComponent, as: 'Missing-Page',	useAsDefault: true }
 ])
 
-export class AppComponent {
-    // @Output() routeScroll: HTMLElement;
+export class AppComponent implements OnInit {
+	ngOnInit() {
+		document.getElementById('logo-lg')
+				.addEventListener('changes', (e) => {
+					console.log(e);
+					// this.adjustLogoSize(e)
+				}, true)
+	}
+	
 	printStuff(data) {
 		console.log(data);
+	};
+	
+	adjustLogoSize(logoElement) {
+		logoElement.width = logoElement.height * 2.231428571428571;
 	};
 	
 	parallaxInit(elem) {
 		console.log(elem);
 		// this.routeScroll = elem;
-	}
+	};
 	
 	constructor(private lightningService: LightningService) {
-	}
+	};
 }

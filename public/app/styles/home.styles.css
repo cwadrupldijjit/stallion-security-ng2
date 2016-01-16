@@ -1,5 +1,6 @@
 #home-template {
-	overflow: auto;
+	/*overflow: auto;*/
+	overflow: hidden;
 }
 
 	#home-banner {

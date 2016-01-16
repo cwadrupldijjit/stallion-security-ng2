@@ -26,7 +26,6 @@ function initServerConfig() {
 function tsServer() {
 	var serverTsConfig = initServerConfig();
 	
-	console.log(serverTsConfig)
 	gulp.src(serverTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(serverTsConfig))
@@ -46,7 +45,6 @@ function initPublicConfig() {
 function tsPublic() {
 	var publicTsConfig = initPublicConfig();
 	
-	console.log(publicTsConfig);
 	gulp.src(publicTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(publicTsConfig))

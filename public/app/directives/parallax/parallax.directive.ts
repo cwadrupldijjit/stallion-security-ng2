@@ -50,7 +50,16 @@ interface ParallaxConfig {
 	parallaxElement?: HTMLElement;
 	
 	// what you want to call it to find the particular instance of it if you need to debug
-	name: string;
+	name?: string;
+	
+	// optional callback function for additional actions during scaling
+	cb?(): void;
+	
+	// arguments for optional callback entered into an array; for context-specific 
+	cb_args?: any[];
+	
+	// callback context in the case where the callback is context-specific
+	cb_context?: any;
 }
 
 @Directive({
@@ -70,6 +79,9 @@ class Parallax implements OnInit {
 	maxValue: number;
 	minValue: number;
 	cssUnit: string = 'px';
+	cb;
+	cb_context: any = null;
+	cb_args: any[] = [];
 	
     cssValue: string;
     isSpecialVal: boolean = false;
@@ -84,9 +96,9 @@ class Parallax implements OnInit {
 		
 		calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
 		
-		if (this.maxValue && calcVal >= this.maxValue)
+		if (this.maxValue !== undefined && calcVal >= this.maxValue)
 			calcVal = this.maxValue;
-		else if (this.minValue && calcVal <= this.minValue)
+		else if (this.minValue !== undefined && calcVal <= this.minValue)
 			calcVal = this.minValue;
 		
 		if (this.cssKey === 'backgroundPosition') {
@@ -100,6 +112,11 @@ class Parallax implements OnInit {
 		} else { 
 			resultVal = calcVal + this.cssUnit;
 		}
+		
+		if (this.cb) {
+			this.cb.apply(this.cb_context, this.cb_args);
+		}
+		
 		this.parallaxElement.style[this.cssKey] = resultVal;
 	}
 	

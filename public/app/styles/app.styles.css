@@ -14,10 +14,6 @@
 	flex: 1;
 }
 
-/*app > * {
-	flex: 1
-}*/
-
 .relative {
 	position: relative;
 }

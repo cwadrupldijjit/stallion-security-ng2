@@ -7,9 +7,16 @@ import {routes} from './config/routes';
 
 const {express} = dependencies;
 
+const pathToPublic = __dirname + '/../public';
+
 const app = express();
 
-middlewareLoader(app);
+middlewareLoader(app, pathToPublic);
 routes(app);
+
+
+app.all('/*', (req, res) => {
+	res.sendFile('index.html', {root: pathToPublic});
+});
 
 app.listen(8000, () => {console.log('listening')});

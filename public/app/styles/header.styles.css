@@ -24,24 +24,23 @@ header {
 		justify-content: space-around;
 	}
 	
-		#centered-logo-holder > * {
+		#centered-logo-holder > img {
+			transition: none;
+			
 			position: relative;
 			left: -50%;
-			top: 2px;
 			
 			height: 100%;
-			width: 0;
-			
-			padding-right: 57%;
+			/*width: auto;*/
 		}
 		
-			#centered-logo-holder > * > img {
+			/*#centered-logo-holder > * > img {
 				position: absolute;
 				top: 0;
 				left: 0;
 				height: 100%;
 				width: 100%;
-			}
+			}*/
 	
 	#lightning-border {
 		width: 100%;

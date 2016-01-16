@@ -1,16 +1,14 @@
 <div id="app-html">
 	<header #header parallax [config]="{
 		parallaxCss: 'height',
-		minValue: 50,
+		minValue: 80,
 		maxValue: 178,
 		parallaxInitVal: 178,
 		parallaxElement: header,
 		scrollElement: route
 	}">
 		<div id="centered-logo-holder">
-			<div>
-				<img src="app/assets/logo.PNG" alt="Stallion Security Logo">
-			</div>
+			<img src="app/assets/logo.PNG" alt="Stallion Security Logo" id="logo-lg" #logo>
 		</div>
 		
 		<!--<div class="large-screen-closed pull-right">
