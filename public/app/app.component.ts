@@ -1,6 +1,7 @@
 import { Component, 
 		 View,
-		 OnInit } from 'angular2/core';
+		 OnInit,
+		 EventEmitter } from 'angular2/core';
 import { COMMON_DIRECTIVES,
 		 CORE_DIRECTIVES } from 'angular2/common';
 import { RouteConfig,
@@ -12,6 +13,8 @@ import { RecommendComponent } from './components/RecommendComponent/recommend.co
 import { MissingPageComponent } from './components/MissingPageComponent/missing.component';
 import { LightningService } from './services/LightningService/lightning.service';
 import { Parallax } from './directives/parallax/parallax.directive';
+
+const logoResize = new EventEmitter();
 
 @Component({
 	selector: 'app',
@@ -40,28 +43,24 @@ import { Parallax } from './directives/parallax/parallax.directive';
 	{ path: '/404',				component: MissingPageComponent, as: 'Missing-Page',	useAsDefault: true }
 ])
 
-export class AppComponent implements OnInit {
+class AppComponent implements OnInit {
 	ngOnInit() {
-		document.getElementById('logo-lg')
-				.addEventListener('changes', (e) => {
-					console.log(e);
-					// this.adjustLogoSize(e)
-				}, true)
+		let resizeSubscription = logoResize.subscribe((event) => {
+			this.adjustLogoSize(document.getElementById('logo-lg'))
+			// console.log('resize event');
+		});
 	}
 	
 	printStuff(data) {
 		console.log(data);
 	};
 	
-	adjustLogoSize(logoElement) {
-		logoElement.width = logoElement.height * 2.231428571428571;
-	};
-	
-	parallaxInit(elem) {
-		console.log(elem);
-		// this.routeScroll = elem;
+	adjustLogoSize(logoElement: HTMLElement = document.getElementById('logo-lg')) {
+		logoElement.style.width = (logoElement.offsetHeight * 2.231428571428571) + 'px';
 	};
 	
 	constructor(private lightningService: LightningService) {
 	};
 }
+
+export {logoResize, AppComponent};

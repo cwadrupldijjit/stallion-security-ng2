@@ -1,5 +1,8 @@
-import {Component, Input} from 'angular2/core';
-import {Parallax} from '../../directives/parallax/parallax.directive';
+import { Component, 
+		 Input, 
+		 OnInit } from 'angular2/core';
+import { Parallax } from '../../directives/parallax/parallax.directive';
+import { logoResize } from '../../app.component';
 
 @Component({
 	templateUrl: 'app/components/HomeComponent/home.html',
@@ -10,7 +13,11 @@ import {Parallax} from '../../directives/parallax/parallax.directive';
 	directives: [Parallax]
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+	ngOnInit() {
+		logoResize.emit(null);
+	}
+	
 	public siteWelcome: string;
 	public welcomeParagraph: string;
 	public bannerImage: string;

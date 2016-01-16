@@ -114,6 +114,7 @@ class Parallax implements OnInit {
 		}
 		
 		if (this.cb) {
+			// console.log('this should be running')
 			this.cb.apply(this.cb_context, this.cb_args);
 		}
 		
@@ -123,8 +124,8 @@ class Parallax implements OnInit {
 	ngOnInit() {
 		let cssValArray: string[];
 		
-		console.log('%s initialized on element', this.name, this.hostElement);
-		console.log(this);
+		// console.log('%s initialized on element', this.name, this.hostElement);
+		// console.log(this);
 		
 		for (let prop in this.config) { this[prop] = this.config[prop]; }
 		this.parallaxCss = this.parallaxCss ? this.parallaxCss : 'backgroundPositionY';

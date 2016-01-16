@@ -31,16 +31,9 @@ header {
 			left: -50%;
 			
 			height: 100%;
-			/*width: auto;*/
+			max-width: 200%;
+			width: auto;
 		}
-		
-			/*#centered-logo-holder > * > img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				height: 100%;
-				width: 100%;
-			}*/
 	
 	#lightning-border {
 		width: 100%;
