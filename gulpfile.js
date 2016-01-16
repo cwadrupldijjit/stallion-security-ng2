@@ -16,15 +16,17 @@ var tsconfig = {
 	removeComments: false
 };
 
-var serverTsConfig = new Object(tsconfig);
-	serverTsConfig.module = 'commonjs';
-
-var publicTsConfig = new Object(tsconfig);
-	publicTsConfig.module = 'system';
-	publicTsConfig.emitDecoratorMetadata = true;
-	publicTsConfig.experimentalDecorators = true;
+function initServerConfig() {
+	var serverTsConfig = new Object(tsconfig);
+		serverTsConfig.module = 'commonjs';
+	
+	return serverTsConfig;
+}
 
 function tsServer() {
+	var serverTsConfig = initServerConfig();
+	
+	console.log(serverTsConfig)
 	gulp.src(serverTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(serverTsConfig))
@@ -32,7 +34,19 @@ function tsServer() {
 		.pipe(gulp.dest('server'));
 }
 
+function initPublicConfig() {
+	var publicTsConfig = new Object(tsconfig);
+		publicTsConfig.module = 'system';
+		publicTsConfig.emitDecoratorMetadata = true;
+		publicTsConfig.experimentalDecorators = true;
+	
+	return publicTsConfig;
+}
+
 function tsPublic() {
+	var publicTsConfig = initPublicConfig();
+	
+	console.log(publicTsConfig);
 	gulp.src(publicTsPath)
 		.pipe(sourcemaps.init())
 			.pipe(tsc(publicTsConfig))

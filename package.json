@@ -11,10 +11,11 @@
     "gulp:tsp": "gulp ts-public",
     "gulp:tss": "gulp ts-server",
     "gulp:comp": "gulp ts-server ts-public sass",
+	"gulp:dev": "gulp dev",
     "lite": "lite-server",
     "server": "nodemon ./server/server.js",
     "original": "concurrent \"npm run tsc:w\" \"npm run lite\" \"npm run gulp:w\" ",
-    "start": "concurrent \"npm run gulp:all\" \"npm run server\" ",
+    "start": "concurrent \"npm run gulp:dev\" \"npm run server\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "me",
