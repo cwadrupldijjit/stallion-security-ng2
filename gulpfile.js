@@ -82,6 +82,6 @@ gulp.task('sass', sassCompile);
 gulp.task('sass-min', sassCompileMin);
 gulp.task('watch', watcher);
 gulp.task('dev', ['ts-server', 'ts-public', 'sass', 'watch']);
-gulp.task('prod', ['ts-public-min', 'sass-min']);
+gulp.task('uglify', ['ts-public-min']);
 
 gulp.task('default', ['']);
