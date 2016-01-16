@@ -1,24 +1,37 @@
 <div class="route-container" id="home-template">
-	<div class="ten-to-four proportional">
+	<div class="proportional" [ngClass]="{'ten-to-three': 'true'}">
 		<div id="home-banner" parallax 
 			[config]="{
-				scrollerId: 'route'
+				scrollerId: 'route',
+				parallaxInitVal: -250,
+				parallaxRatio: .8
 			}"
 		></div>
 	</div>
 	
-	<h3 id="site-welcome" class="relative"
+	<h3 id="site-welcome" 
+		class="relative" *ngIf="siteWelcome"
+		parallax [config]="{
+			name: 'site-welcome',
+			scrollerId: 'route',
+			parallaxRatio: 1,
+			parallaxCss: 'top',
+			parallaxInitVal: -100,
+			maxValue: 0
+		}"
+	>
+		{{ siteWelcome }}
+	</h3>
+	
+	<p id="welcome-text"
 		parallax [config]="{
 			name: 'site-welcome',
 			scrollerId: 'route',
 			parallaxRatio: .6,
 			parallaxCss: 'top',
 			parallaxInitVal: -70,
+			parallaxIf: siteWelcome,
 			maxValue: 0
 		}"
-	>
-		Welcome to the website for Stallion Security!
-	</h3>
-	
-	<p>this is a paragraph</p>
+	></p>
 </div>

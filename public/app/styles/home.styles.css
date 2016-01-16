@@ -6,7 +6,7 @@
 }*/
 
 	#home-banner {
-		background-image: url('./app/assets/dawn-190055.jpg');
+		/*background-image: url('./app/assets/dawn-190055.jpg');*/
 		box-shadow: 0 0 20px rgba(0,0,0,.8), 0 0 10px rgba(0,0,0,.8);
 	}
 	
@@ -15,4 +15,8 @@
 		background-color: rgba(0,0,0,.5);
 		box-shadow: 0 0 10px rgba(0,0,0,1);
 		text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,1);
+	}
+	
+	#welcome-text {
+		position: relative;
 	}

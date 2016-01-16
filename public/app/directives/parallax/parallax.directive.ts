@@ -1,6 +1,11 @@
 // ng2-parallax
 
-import {Directive, ElementRef, Host, Input, OnInit} from 'angular2/core';
+import { Directive, 
+		 ElementRef, 
+		 Host, 
+		 Input,
+		 Optional, 
+		 OnInit } from 'angular2/core';
 
 /* 
 These are optional values you can include in the config object you can pass into the 
@@ -25,6 +30,10 @@ interface ParallaxConfig {
 	// this is the initial value in pixels for the parallaxCss property you defined
 	// before or, if you didn't define one, it defaults to 0
 	parallaxInitVal?: number;
+	
+	// use this if you want the parallax effect only if the passed in statement is 
+	// truthy; default is boolean true
+	parallaxIf?: any;
 	
 	// the id for the element on the page you'd like to track the scrolling of in the 
 	// case where the element is not available in the current component; 
@@ -70,55 +79,62 @@ class Parallax implements OnInit {
 	name: string = 'parallaxDirective';
 	
     @Input() config: ParallaxConfig;
-    cssKey: string = 'backgroundPosition';
-	parallaxCss: string = 'backgroundPositionY';
-	parallaxAxis: string = 'Y';
-    parallaxRatio: number = -.7;
-    parallaxInitVal: number = 0;
-	scrollerId: string;
-	maxValue: number;
-	minValue: number;
-	cssUnit: string = 'px';
-	cb;
-	cb_context: any = null;
-	cb_args: any[] = [];
+	// the following @Inputs are all part of the config object, which for 
+	// brevity's sake, you can do a bunch of operations in bulk by passing 
+	// in the config object; caveat for this is that angular 2 won't permit 
+	// more than 9 keys being passed in an object via the template
+    @Input() cssKey: string = 'backgroundPosition';
+	@Input() parallaxCss: string = 'backgroundPositionY';
+	@Input() parallaxAxis: string = 'Y';
+    @Input() parallaxRatio: number = -.7;
+    @Input() parallaxInitVal: number = 0;
+	@Input() parallaxIf: any = true;
+	@Input() scrollerId: string;
+	@Input() maxValue: number;
+	@Input() minValue: number;
+	@Input() cssUnit: string = 'px';
+	@Input() cb;
+	@Input() cb_context: any = null;
+	@Input() cb_args: any[] = [];
 	
-    cssValue: string;
-    isSpecialVal: boolean = false;
+    private cssValue: string;
+    private isSpecialVal: boolean = false;
 	
-	hostElement: HTMLElement;
-	scrollElement: HTMLElement;
-	parallaxElement: HTMLElement;
+	private hostElement: HTMLElement;
+	@Input() scrollElement: HTMLElement;
+	@Input() parallaxElement: HTMLElement;
 	
 	private evaluateScroll = () => {
-		let resultVal: string;
-		let calcVal: number;
-		
-		calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
-		
-		if (this.maxValue !== undefined && calcVal >= this.maxValue)
-			calcVal = this.maxValue;
-		else if (this.minValue !== undefined && calcVal <= this.minValue)
-			calcVal = this.minValue;
-		
-		if (this.cssKey === 'backgroundPosition') {
-			if (this.parallaxAxis === 'X') {
-				resultVal = calcVal + this.cssUnit + ' 0';
-			} else {
-				resultVal = '0 ' + calcVal + this.cssUnit;
+		if (this.parallaxIf) {
+			let resultVal: string;
+			let calcVal: number;
+			
+			calcVal = this.scrollElement.scrollTop * this.parallaxRatio + this.parallaxInitVal;
+			
+			if (this.maxValue !== undefined && calcVal >= this.maxValue)
+				calcVal = this.maxValue;
+			else if (this.minValue !== undefined && calcVal <= this.minValue)
+				calcVal = this.minValue;
+			
+			if (this.cssKey === 'backgroundPosition') {
+				if (this.parallaxAxis === 'X') {
+					resultVal = calcVal + this.cssUnit + ' 0';
+				} else {
+					resultVal = '0 ' + calcVal + this.cssUnit;
+				}
+			} else if (this.isSpecialVal) {
+				resultVal = this.cssValue + '(' + calcVal + this.cssUnit + ')';
+			} else { 
+				resultVal = calcVal + this.cssUnit;
 			}
-		} else if (this.isSpecialVal) {
-			resultVal = this.cssValue + '(' + calcVal + this.cssUnit + ')';
-		} else { 
-			resultVal = calcVal + this.cssUnit;
+			
+			if (this.cb) {
+				// console.log('this should be running')
+				this.cb.apply(this.cb_context, this.cb_args);
+			}
+			
+			this.parallaxElement.style[this.cssKey] = resultVal;
 		}
-		
-		if (this.cb) {
-			// console.log('this should be running')
-			this.cb.apply(this.cb_context, this.cb_args);
-		}
-		
-		this.parallaxElement.style[this.cssKey] = resultVal;
 	}
 	
 	ngOnInit() {
