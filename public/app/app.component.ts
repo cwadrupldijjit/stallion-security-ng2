@@ -14,6 +14,7 @@ import { RecommendComponent } from './components/RecommendComponent/recommend.co
 import { MissingPageComponent } from './components/MissingPageComponent/missing.component';
 import { LightningService } from './services/LightningService/lightning.service';
 import { Parallax } from './directives/parallax/parallax.directive';
+import { SlimScroll } from './slimscroll';
 
 const logoResize = new EventEmitter();
 

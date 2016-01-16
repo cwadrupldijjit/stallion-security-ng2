@@ -97,6 +97,8 @@ class Parallax implements OnInit {
 	@Input() cb_context: any = null;
 	@Input() cb_args: any[] = [];
 	
+	parallaxStyles: {};
+	
     private cssValue: string;
     private isSpecialVal: boolean = false;
 	
@@ -116,6 +118,7 @@ class Parallax implements OnInit {
 			else if (this.minValue !== undefined && calcVal <= this.minValue)
 				calcVal = this.minValue;
 			
+			// added after realizing original setup wasn't compatible in Firefox
 			if (this.cssKey === 'backgroundPosition') {
 				if (this.parallaxAxis === 'X') {
 					resultVal = calcVal + this.cssUnit + ' 0';
@@ -133,7 +136,7 @@ class Parallax implements OnInit {
 				this.cb.apply(this.cb_context, this.cb_args);
 			}
 			
-			this.parallaxElement.style[this.cssKey] = resultVal;
+			this.parallaxStyles[this.cssKey] = resultVal;
 		}
 	}
 	
