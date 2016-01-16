@@ -1,6 +1,7 @@
 import { Component, 
 		 View,
 		 OnInit,
+		 OnDestroy,
 		 EventEmitter } from 'angular2/core';
 import { COMMON_DIRECTIVES,
 		 CORE_DIRECTIVES } from 'angular2/common';
@@ -43,20 +44,27 @@ const logoResize = new EventEmitter();
 	{ path: '/404',				component: MissingPageComponent, as: 'Missing-Page',	useAsDefault: true }
 ])
 
-class AppComponent implements OnInit {
+class AppComponent implements OnInit, OnDestroy {
+	resizeSubscription = logoResize.subscribe((event) => {
+		this.adjustLogoSize(document.getElementById('logo-lg'))
+		// console.log('resize event');
+	}); 
+	
 	ngOnInit() {
-		let resizeSubscription = logoResize.subscribe((event) => {
-			this.adjustLogoSize(document.getElementById('logo-lg'))
-			// console.log('resize event');
-		});
-	}
+	};
+	
+	ngOnDestroy() {
+		this.resizeSubscription.dispose();
+	};
 	
 	printStuff(data) {
 		console.log(data);
 	};
 	
 	adjustLogoSize(logoElement: HTMLElement = document.getElementById('logo-lg')) {
-		logoElement.style.width = (logoElement.offsetHeight * 2.231428571428571) + 'px';
+		setTimeout(() => {
+			logoElement.style.width = (logoElement.offsetHeight * 2.231428571428571) + 'px';
+		}, 0);
 	};
 	
 	constructor(private lightningService: LightningService) {
