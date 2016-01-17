@@ -4,12 +4,12 @@ var slimScroll = function(C: HTMLElement, payload){
         w = "wrapper",s = "scrollBar",S = "scrollBarContainer",a = "",m = "",l="data-slimscroll",
         // properties
         oT = "offsetTop",sT = "scrollTop",pE = "parentElement",pes= "previousElementSibling", 
-        iH = "innerHTML",cT = "currentTarget",sK = "scroll-k",U = "%",d = ".",
+        unit = "%",
         // IE8 properties
         assignValues = function(k?){
             var q = i.E;
-            i.h = i[S].offsetHeight;
-            i.sH = i[w].scrollHeight;
+            i.h = i.scrollBarContainer.offsetHeight;
+            i.sH = i.wrapper.scrollHeight;
             i.sP = (i.h/i.sH) * 100;
             // i.sbh is scroll bar height in pixels without pixel unit.
             i.sbh = i.sP * i.h/100;
@@ -21,9 +21,9 @@ var slimScroll = function(C: HTMLElement, payload){
             i.rP1 = 100 - i.sP1;
             i.x = (i.sH - i.h) * ((i.sP1 - i.sP)/(100 - i.sP));
             i.sH1 = Math.abs((i.x / (i.rP1)) + (i.sH/100));
-            i[s].style.height = i.sP1 + U;
+            i.scrollBar.style.height = i.sP1 + unit;
             
-            i.reposition = getReposition(i[s], i.h);
+            i.reposition = getReposition(i.scrollBar, i.h);
         },
         // Start of private functions
         setAttr = function(e, p, v){
@@ -39,7 +39,7 @@ var slimScroll = function(C: HTMLElement, payload){
         cE = function(c, h, p){
             var d = document.createElement('div');
             addClass(d, c);
-            d[iH] = h;
+            d.innerHTML = h;
             p.appendChild(d);
             return d;
         },
@@ -48,14 +48,14 @@ var slimScroll = function(C: HTMLElement, payload){
                 p = el[pE];
             var q = i.E;
 
-            if(!i || p === i[S]) return;
+            if(!i || p === i.scrollBarContainer) return;
             var eY = e.pageY || event.clientY,
-                top = ((eY - getTop(i[w][pE]))/i.h * 100) - i.sP1/2;
+                top = ((eY - getTop(i.wrapper[pE]))/i.h * 100) - i.sP1/2;
             if(top > i.rP1) top = i.rP1;
             else if(top < 0) top = 0;
-            i[s].style.top = top + U;
-            i[w][sT] = top * i.sH1;
-            addClass(i[S], q.S + q.a);
+            i.scrollBar.style.top = top + unit;
+            i.wrapper[sT] = top * i.sH1;
+            addClass(i.scrollBarContainer, q.S + q.a);
         },
         beginScroll = function(e){
             // removing selected text
@@ -66,19 +66,19 @@ var slimScroll = function(C: HTMLElement, payload){
                 else if (sel.empty) sel.empty();
             }
             var e = e || event,
-                el = e[cT];
+                el = e.currentTarget;
 
             addEvent('mousemove', document, moveScroll);
             addEvent('mouseup', document, endScroll);
 
-            i[oT] = getTop(i[w]);
+            i[oT] = getTop(i.wrapper);
             i.firstY = e.pageY || event.clientY;
-            if(!i.reposition) i.reposition = getReposition(i[s], i.h);
+            if(!i.reposition) i.reposition = getReposition(i.scrollBar, i.h);
             // Disable text selection while dragging the scrollbar
             return false;
         },
         getReposition = function(i, h){
-            var x = parseInt(i.style.top.replace(U,""),10) * h/100;
+            var x = parseInt(i.style.top.replace(unit,""),10) * h/100;
             return x?x:0;
         },
         moveScroll = function(e){
@@ -90,12 +90,12 @@ var slimScroll = function(C: HTMLElement, payload){
             if(i.rP1 < top) top = i.rP1;
             if(!i.previousTop) i.previousTop = top + 1;
             var blnThreshold = top >= 0 && i.firstY > i[oT];
-            if((i.previousTop > top && blnThreshold) || (blnThreshold && (i[w][sT] + i.h !== i.sH))){
-                i[s].style.top = top + U;
+            if((i.previousTop > top && blnThreshold) || (blnThreshold && (i.wrapper[sT] + i.h !== i.sH))){
+                i.scrollBar.style.top = top + unit;
                 i.previousTop = top;   
-                i[w][sT] = top * i.sH1;
+                i.wrapper[sT] = top * i.sH1;
             }
-            addClass(i[S], q.S);
+            addClass(i.scrollBarContainer, q.S);
         },
         endScroll = function(e){
             var e = e || event,q = i.E; 
@@ -104,15 +104,15 @@ var slimScroll = function(C: HTMLElement, payload){
             removeEvent('mouseup', document);
 
             i.reposition = 0;
-            addClass(i[S], q.S + q.a);
+            addClass(i.scrollBarContainer, q.S + q.a);
         },
         doScroll = function(e){
             var e = e || event;
             if(!i) return;
             var q = i.E;
-            addClass(i[S], q.S);
-            i[s].style.top = i[w][sT]/i.sH1 + U;
-            addClass(i[S], q.S + q.a);
+            addClass(i.scrollBarContainer, q.S);
+            i.scrollBar.style.top = i.wrapper[sT]/i.sH1 + unit;
+            addClass(i.scrollBarContainer, q.S + q.a);
         },
         addEvent = function(e, el, func){
             el['on' + e] = func;
@@ -174,7 +174,7 @@ var slimScroll = function(C: HTMLElement, payload){
             if(C.offsetHeight < C.scrollHeight){
                 setAttr(C, l, '1');
                 insertCss();
-                var h = C[iH], q = i.E = {};
+                var h = C.innerHTML, q = i.E = {};
                 // setting user defined classes
                 payload = payload || {};
                 q.w = payload.wrapperClass || "";
@@ -184,23 +184,23 @@ var slimScroll = function(C: HTMLElement, payload){
                 q.mH = payload.scrollBarMinHeight || 25;
                 q.sH = payload.scrollBarFixedHeight;  // could be undefined
 
-                C[iH] = "";
-                i[w] = cE(q.w, h, C);
-                i[S] = cE(q.S + q.a, "", C);
-                i[s] = cE(q.s, "", i[S]);
-                setAttr(i[s], 'data-scrollbar', '1');
+                C.innerHTML = "";
+                i.wrapper = cE(q.w, h, C);
+                i.scrollBarContainer = cE(q.S + q.a, "", C);
+                i.scrollBar = cE(q.s, "", i.scrollBarContainer);
+                setAttr(i.scrollBar, 'data-scrollbar', '1');
                 assignValues();
 
                 if(payload.keepFocus){
-                    setAttr(i[w], 'tabindex', '-1');
-                    i[w].focus();
+                    setAttr(i.wrapper, 'tabindex', '-1');
+                    i.wrapper.focus();
                 }
                 // Attaching mouse events
-                addEvent('mousedown', i[s], beginScroll);
-                addEvent('click', i[S], setScroll);
+                addEvent('mousedown', i.scrollBar, beginScroll);
+                addEvent('click', i.scrollBarContainer, setScroll);
                 // For scroll
-                addEvent('scroll', i[w], doScroll);
-                // addEvent('selectstart', i[S], function(){return;});
+                addEvent('scroll', i.wrapper, doScroll);
+                // addEvent('selectstart', i.scrollBarContainer, function(){return;});
             }
         }();
     return {
