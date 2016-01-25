@@ -57,26 +57,36 @@ class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterView
 	
 	routeLoadHandler = (event) => {
 		// debugger;
-		let routeElem = document.getElementsByClassName('route')[0];
-		if (routeElem.scrollHeight > routeElem.offsetHeight) {
-			let scrollbarCustomizations = {
-				scrollBarClass: 'scrollbar',
-				scrollBarContainerClass: 'scrollbar-container',
-				scrollBarMinHeight: 30,
-				wrapperClass: 'wrapper route-wrapper centered-container',
-				wrapperId: 'route'
-			};
-			var elem: Attr;
-			// elem.
-			// console.log('slimscroll should initialize...')
-			this.customScroll = new slimScroll(document.getElementsByClassName('route')[0], scrollbarCustomizations);
-			console.log(routeElem.firstElementChild.setAttribute('id', 'route'))
-			// console.log('customScroll', this.customScroll);
+		// let routeElem = document.getElementsByClassName('route')[0];
+		// if (routeElem.scrollHeight > routeElem.offsetHeight) {
+		// 	let scrollbarCustomizations = {
+		// 		scrollBarClass: 'scrollbar',
+		// 		scrollBarContainerClass: 'scrollbar-container',
+		// 		scrollBarMinHeight: 30,
+		// 		wrapperClass: 'wrapper route-wrapper centered-container',
+		// 		wrapperId: 'route'
+		// 	};
+		// 	var elem: Attr;
+		// 	// elem.
+		// 	// console.log('slimscroll should initialize...')
+		// 	this.customScroll = new slimScroll(document.getElementsByClassName('route')[0], scrollbarCustomizations);
+		// 	console.log(routeElem.firstElementChild.setAttribute('id', 'route'))
+		// 	// console.log('customScroll', this.customScroll);
 			
-			window.addEventListener('resize', () => {
-				this.customScroll.resetValues()
-			}, false);
-		}
+		// 	window.addEventListener('resize', () => {
+		// 		this.customScroll.resetValues()
+		// 	}, false);
+		// }
+	};
+	
+	parallaxConfig = {
+		parallaxCss: 'height',
+		minValue: 80,
+		maxValue: 178,
+		parallaxInitVal: 178,
+		parallaxRatio: -2,
+		scrollerId: 'route',
+		cb: this.eventFunc
 	};
 	
 	resizeSubscription = logoResize.subscribe(this.eventFunc);

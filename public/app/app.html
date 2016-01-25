@@ -1,13 +1,5 @@
 <div id="app-html">
-	<header #header id="header" parallax [config]="{
-		parallaxCss: 'height',
-		minValue: 80,
-		maxValue: 178,
-		parallaxInitVal: 178,
-		parallaxRatio: -2,
-		scrollElement: route,
-		cb: eventFunc
-	}">
+	<header #header id="header" parallax [config]="parallaxConfig">
 		<div id="centered-logo-holder">
 			<img src="app/assets/logo.PNG" alt="Stallion Security Logo" id="logo-lg" #logo>
 		</div>
@@ -19,25 +11,27 @@
 		<canvas id="lightning-border"></canvas>
 	</header>
 		
-	<div id="main-menu" class="centered-container">
-		<nav class="menu-options">
-			<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
-		</nav>
-		
-		<nav class="menu-options">
-			<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
-		</nav>
-		
-		<nav class="menu-options">
-			<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
-		</nav>
-		
-		<!--<nav class="menu-options">
-			<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
-		</nav>-->
+	<div id="main-menu">
+		<div class="centered-container">
+			<nav class="menu-options">
+				<div [routerLink]="['Home']" class="menu-main-button"><b>Home</b></div>
+			</nav>
+			
+			<nav class="menu-options">
+				<div [routerLink]="['Services']" class="menu-main-button"><b>Services</b></div>
+			</nav>
+			
+			<nav class="menu-options">
+				<div [routerLink]="['Recommendations']" class="menu-main-button"><b>Recommendations</b></div>
+			</nav>
+			
+			<!--<nav class="menu-options">
+				<div [routerLink]="#/contact-me" class="menu-main-button"><b>Contact Us</b></div>
+			</nav>-->
+		</div>
 	</div>
 
-	<div id="route-wrapper" class="route centered-container wrapper" data-slimscroll="" #route>
+	<div id="route" class="route wrapper" data-slimscroll="" #route>
 		<router-outlet></router-outlet>
 	</div>
 

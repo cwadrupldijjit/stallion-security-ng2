@@ -11,10 +11,14 @@
 	
 	#site-welcome {
 		padding: 10px 20px;
+		
+		margin: 18px 0;
+		
 		background-color: rgba(0,0,0,.5);
 		box-shadow: 0 0 10px rgba(0,0,0,1);
 		text-shadow: 0 0 20px rgba(0,0,0,.8), 0 0 10px rgba(0,0,0,.8);
 	}
+	
 	#welcome-text {
 		position: relative;
 	}
