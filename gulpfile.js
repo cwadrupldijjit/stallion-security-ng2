@@ -57,10 +57,8 @@ function tsPublicMin() {
 	publicTsConfigMin.removeComments = true;
 	
 	gulp.src(publicTsPath)
-		.pipe(sourcemaps.init())
-			.pipe(tsc(publicTsConfigMin))
-			.pipe(uglify())
-		.pipe(sourcemaps.write())
+		.pipe(tsc(publicTsConfigMin))
+		.pipe(uglify())
 		.pipe(gulp.dest('public-uglified'))
 }
 
@@ -74,10 +72,8 @@ function sassCompile() {
 
 function sassCompileMin() {
 	gulp.src(publicSassPath)
-		.pipe(sourcemaps.init())
-			.pipe(sass()).on('error', sass.logError)
-			.pipe(uglify())
-		.pipe(sourcemaps.write())
+		.pipe(sass()).on('error', sass.logError)
+		.pipe(uglify())
 		.pipe(gulp.dest('./public-uglified/app'))
 }
 
@@ -96,4 +92,4 @@ gulp.task('watch', watcher);
 gulp.task('dev', ['ts-server', 'ts-public', 'sass', 'watch']);
 gulp.task('uglify', ['ts-public-min']);
 
-gulp.task('default', ['']);
+gulp.task('default', ['dev']);

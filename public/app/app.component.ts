@@ -17,7 +17,6 @@ import { RecommendComponent } from './components/RecommendComponent/recommend.co
 import { MissingPageComponent } from './components/MissingPageComponent/missing.component';
 import { LightningService } from './services/LightningService/lightning.service';
 import { Parallax } from './directives/parallax/parallax.directive';
-import { slimScroll } from './slimscroll';
 
 const logoResize = new EventEmitter(),
 	  routeLoaded = new EventEmitter();
@@ -56,27 +55,7 @@ class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterView
 	};
 	
 	routeLoadHandler = (event) => {
-		// debugger;
-		// let routeElem = document.getElementsByClassName('route')[0];
-		// if (routeElem.scrollHeight > routeElem.offsetHeight) {
-		// 	let scrollbarCustomizations = {
-		// 		scrollBarClass: 'scrollbar',
-		// 		scrollBarContainerClass: 'scrollbar-container',
-		// 		scrollBarMinHeight: 30,
-		// 		wrapperClass: 'wrapper route-wrapper centered-container',
-		// 		wrapperId: 'route'
-		// 	};
-		// 	var elem: Attr;
-		// 	// elem.
-		// 	// console.log('slimscroll should initialize...')
-		// 	this.customScroll = new slimScroll(document.getElementsByClassName('route')[0], scrollbarCustomizations);
-		// 	console.log(routeElem.firstElementChild.setAttribute('id', 'route'))
-		// 	// console.log('customScroll', this.customScroll);
-			
-		// 	window.addEventListener('resize', () => {
-		// 		this.customScroll.resetValues()
-		// 	}, false);
-		// }
+		console.log(event);
 	};
 	
 	parallaxConfig = {

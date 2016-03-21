@@ -20,9 +20,7 @@ import { logoResize,
 export class HomeComponent implements OnInit, AfterContentInit {
 	ngOnInit() {
 		logoResize.emit(null);
-		
 		document.getElementById('home-banner').style.backgroundImage = 'url(' + this.bannerImage + ')';
-		
 		document.getElementById('welcome-text').innerHTML = this.welcomeText;
 	}
 	
@@ -38,10 +36,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
 		parallaxInitVal: -250,
 		parallaxRatio: .8
 	};
-	
-	// bannerParallaxConfig = {
-	// 	scrollerId: 'route'
-	// };
 	
 	welcomeParallaxConfig = {
 		name: 'site-welcome',

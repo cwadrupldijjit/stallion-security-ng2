@@ -19,4 +19,4 @@ app.all('/*', (req, res) => {
 	res.sendFile('index.html', {root: pathToPublic});
 });
 
-app.listen(8000, () => {console.log('listening')});
+app.listen(8000, () => {console.log('listening on port 8000')});
