@@ -84,7 +84,7 @@ class AppComponent implements OnInit, AfterContentInit, AfterViewInit, AfterView
 	};
 	
 	ngAfterViewChecked() {
-	}
+	};
 	
 	ngOnDestroy() {
 		this.resizeSubscription.dispose();
